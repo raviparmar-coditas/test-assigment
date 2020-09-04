@@ -1,0 +1,38 @@
+<div class="edit-product-wrapper">
+
+    <div class="edit-product-body">
+        <div class="heading">
+            <h3>
+                Edit Product
+            </h3>
+        </div>
+        <form [formGroup]="editProductForm">
+
+            <div class="input-wrapper">
+                <label for="username">id</label>
+                <input type="text" placeholder="Enter unique id" formControlName="id">
+            </div>
+
+        <div class="input-wrapper">
+            <label for="heading">heading</label>
+            <input type="text" placeholder="Enter Heading" formControlName="heading">
+        </div>
+        <div class="input-wrapper">
+            <label for="description">description</label>
+            <input type="text" placeholder="Enter description" formControlName="description">
+        </div>
+        <div class="input-wrapper">
+            <label for="imageUrl">imageUrl</label>
+            <input type="text" placeholder="Enter imageUrl" formControlName="imageUrl">
+        </div>
+
+    </form>
+
+        <div class="btn-wrapper">
+            <custom-button  title = "Edit Product" (click)= "editProduct()"></custom-button >
+            <custom-button  title = "Cancel" (click)= "Cancel()"></custom-button>
+        </div>
+    </div>
+
+
+</div>
