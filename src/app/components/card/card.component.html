@@ -1,12 +1,13 @@
 <div class="card">
-  <img
-    src={{imageUrl}}
-    alt="card image"
-  />
+  <img src="{{ product.imageUrl }}" alt="card image" />
   <div class="info">
-    <h3>{{heading}}</h3>
+    <h3>{{ product.heading }}</h3>
     <p>
-{{description}}
+      {{ product.description }}
     </p>
+  </div>
+  <div class="btn-wrapper" *ngIf="this.stateService.user">
+    <custom-button  title="Edit" (click)="edit(product.id)"></custom-button >
+    <custom-button  title="Delete" (click)="deleteProduct(product.id)"></custom-button>
   </div>
 </div>

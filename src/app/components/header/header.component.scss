@@ -1,14 +1,16 @@
-@import '../../../theme/variable.scss';
+@import "../../../theme/variable.scss";
 
-header{
-    width: 100%;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    position: fixed;
-    top: 0;
-    background-color: $white;
-    padding: 0 1rem;
-
+header {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  background-color: $white;
+  padding: 0 1rem;
+  .btn-wrapper {
+    margin: 0 0.5rem;
+  }
 }

@@ -6,16 +6,20 @@
                 Login
             </h3>
         </div>
+        <form [formGroup]="loginform">
+
         <div class="input-wrapper">
             <label for="username">Email</label>
-            <input type="email" placeholder="Enter your email">
+            <input type="email" placeholder="Enter your email" formControlName="email">
         </div>
         <div class="input-wrapper">
             <label for="username">Password</label>
-            <input type="password" placeholder="Enter your password">
+            <input type="password" placeholder="Enter your password" formControlName="password">
         </div>
+    </form>
+
         <div class="btn-wrapper">
-            <app-button title = "Login" (click)= "closeForm()"></app-button>
+            <app-button title = "Login" (click)= "login()"></app-button>
         </div>
     </div>
 

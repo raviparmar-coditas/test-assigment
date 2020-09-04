@@ -4,6 +4,12 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class StateService {
-  LoggedInFormView = false;
+  loggedInFormView:boolean = false;
+  addProductFormView:boolean = false;
+  editProductFormView:boolean = false;
+  isLoggedIn:boolean  = false;
+  get user(): any {
+    return sessionStorage.getItem('token');
+}
   constructor() { }
 }
