@@ -3,6 +3,8 @@ import { StateService } from 'src/app/services/state.service';
 import { HttpService } from 'src/app/services/http.service';
 import { environment } from 'src/environments/environment';
 import { CustomElement } from '../../lit-elements/cutom-button-elements';
+import { Store } from '@ngrx/store';
+import * as loginActions from '../../store/action'
 
 console.assert(CustomElement !== undefined);
 @Component({
@@ -15,7 +17,7 @@ export class CardComponent implements OnInit {
   @Output() newItemIdEvent = new EventEmitter<any>();
   @Input() product;
 
-  constructor(public stateService: StateService,private httpService:HttpService) {
+  constructor(public stateService: StateService,private httpService:HttpService,private store: Store<any>) {
     
     JSON.stringify
    }
@@ -31,7 +33,8 @@ export class CardComponent implements OnInit {
     })
   }
   edit(id){
-    this.stateService.editProductFormView = true;
+    // this.stateService.editProductFormView = true;
+    this.store.dispatch(new loginActions.ShowEditProductAction());
     this.newItemIdEvent.emit(id);
   }
   

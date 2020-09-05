@@ -5,6 +5,9 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { Output, EventEmitter } from '@angular/core';
 import { CustomElement } from '../../lit-elements/cutom-button-elements';
+import { Store } from '@ngrx/store';
+import * as loginActions from '../../store/action'
+
 console.assert(CustomElement !== undefined);
 @Component({
 	selector: 'app-edit-products',
@@ -16,7 +19,8 @@ export class EditProductsComponent implements OnInit {
 	@Input() id;
 	constructor(
 		public stateService: StateService,
-		private httpService: HttpService
+		private httpService: HttpService,
+		private store: Store<any>
 	) {}
 
 	editProductForm = new FormGroup({
@@ -48,12 +52,14 @@ export class EditProductsComponent implements OnInit {
 			)
 			.subscribe((data) => {
 				console.log(data);
-				this.stateService.editProductFormView = false;
+				// this.stateService.editProductFormView = false;
+				this.store.dispatch(new loginActions.HideEditProductAction());
 				this.newItemEvent.emit(data);
 			});
 	}
 
 	Cancel() {
-		this.stateService.editProductFormView = false;
+		this.store.dispatch(new loginActions.HideEditProductAction());
+		// this.stateService.editProductFormView = false;
 	}
 }

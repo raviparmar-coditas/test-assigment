@@ -1,7 +1,7 @@
 <app-header></app-header>
-<app-login *ngIf="this.stateService.loggedInFormView"></app-login>
-<app-add-product (newItemEvent)="addItem($event)" *ngIf="this.stateService.addProductFormView"></app-add-product>
-<app-edit-products id={{id}} (newItemEvent)="addItem($event)" *ngIf="this.stateService.editProductFormView"></app-edit-products>
+<app-login *ngIf="loggedInFormView"></app-login>
+<app-add-product (newItemEvent)="addItem($event)" *ngIf="addProductFormView"></app-add-product>
+<app-edit-products id={{id}} (newItemEvent)="addItem($event)" *ngIf="editProductFormView"></app-edit-products>
 <main>
   <div class="container">
     <div *ngFor="let item of products">

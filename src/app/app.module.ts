@@ -11,7 +11,10 @@ import { ButtonComponent } from './common-components/button/button.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { EditProductsComponent } from './components/edit-products/edit-products.component';
-import { CustomElement } from './lit-elements/cutom-button-elements';
+// import { CustomElement } from './lit-elements/cutom-button-elements';  
+
+import { StoreModule } from '@ngrx/store';
+import { reducer } from './store/reducer'
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +30,10 @@ import { CustomElement } from './lit-elements/cutom-button-elements';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    StoreModule.forRoot({
+      loginView:reducer
+    })
   ],
   providers: [],
   schemas: [
