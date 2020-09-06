@@ -4,14 +4,14 @@
 <app-edit-products id={{id}} (newItemEvent)="addItem($event)" *ngIf="editProductFormView"></app-edit-products>
 <main>
   <div class="container">
-    <div *ngFor="let item of products">
+    <ng-container *ngFor="let item of products">
       <app-card
       [product]="item"
         (newItemEvent)="addItem($event)"
         (newItemIdEvent)="editItem($event)"
       >
       </app-card>
-    </div>
+    </ng-container>
   </div>
 </main>
 

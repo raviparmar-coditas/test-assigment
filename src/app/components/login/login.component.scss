@@ -7,7 +7,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: $bg-shadow;
+  background-color: var(--bg-shadow);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,7 +15,7 @@
   .login-body {
     width: 30%;
     // height: 400px;
-    background-color: $white;
+    background-color: var(--white);
     border-radius: 15px;
     padding: 2em;
 

@@ -1,0 +1,2392 @@
+{
+    "pipes": [],
+    "interfaces": [
+        {
+            "name": "State",
+            "id": "interface-State-fa3b5fb6ea38ceb5f03e22231061fd83",
+            "file": "src/app/store/modal.ts",
+            "type": "interface",
+            "sourceCode": "export interface State {\r\n    loggedInFormView:boolean ,\r\n    addProductFormView:boolean ,\r\n    editProductFormView:boolean ,\r\n  };",
+            "properties": [
+                {
+                    "name": "addProductFormView",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "editProductFormView",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "loggedInFormView",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        }
+    ],
+    "injectables": [
+        {
+            "name": "HttpService",
+            "id": "injectable-HttpService-e49ae71488a02002be708ee477d62572",
+            "file": "src/app/services/http.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "deleteSecured",
+                    "args": [
+                        {
+                            "name": "url",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<any>",
+                    "typeParameters": [],
+                    "line": 31,
+                    "jsdoctags": [
+                        {
+                            "name": "url",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getHeader",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "{ headers: any; }",
+                    "typeParameters": [],
+                    "line": 10
+                },
+                {
+                    "name": "getSecured",
+                    "args": [
+                        {
+                            "name": "url",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<any>",
+                    "typeParameters": [],
+                    "line": 23,
+                    "jsdoctags": [
+                        {
+                            "name": "url",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "patchSecured",
+                    "args": [
+                        {
+                            "name": "url",
+                            "type": ""
+                        },
+                        {
+                            "name": "payload",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 35,
+                    "jsdoctags": [
+                        {
+                            "name": "url",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "payload",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "postLogin",
+                    "args": [
+                        {
+                            "name": "url",
+                            "type": ""
+                        },
+                        {
+                            "name": "payload",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<any>",
+                    "typeParameters": [],
+                    "line": 39,
+                    "jsdoctags": [
+                        {
+                            "name": "url",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "payload",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "postSecured",
+                    "args": [
+                        {
+                            "name": "url",
+                            "type": ""
+                        },
+                        {
+                            "name": "payload",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<any>",
+                    "typeParameters": [],
+                    "line": 27,
+                    "jsdoctags": [
+                        {
+                            "name": "url",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "payload",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "description": "",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { HttpClient, HttpHeaders } from '@angular/common/http';\nimport { Observable } from 'rxjs';\n@Injectable({\n  providedIn: 'root'\n})\nexport class HttpService {\n\n  constructor(private httpClient: HttpClient) { }\n  getHeader() {\n    let json = sessionStorage.getItem('token');\n    if (json) {\n      let headers = new HttpHeaders({\n        'Content-Type': 'application/json',\n        'Authorization': `Bearer ${json}`\n      });\n      return { headers: headers }\n\n    }\n    return { headers: null }\n  };\n\n  getSecured(url): Observable<any> {\n    return this.httpClient.get(url);\n  }\n\n  postSecured(url, payload): Observable<any> {\n    return this.httpClient.post(url, payload, this.getHeader());\n  }\n\n  deleteSecured(url): Observable<any> {\n    return this.httpClient.delete(url,this.getHeader());\n  }\n\n  patchSecured(url, payload) {\n    return this.httpClient.patch(url, payload,this.getHeader());\n  }\n\n  postLogin(url, payload): Observable<any> {\n    return this.httpClient.post(url, payload);\n  }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "httpClient",
+                        "type": "HttpClient"
+                    }
+                ],
+                "line": 7,
+                "jsdoctags": [
+                    {
+                        "name": "httpClient",
+                        "type": "HttpClient",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "type": "injectable"
+        },
+        {
+            "name": "StateService",
+            "id": "injectable-StateService-e571a31d917efbd60b5291794b081446",
+            "file": "src/app/services/state.service.ts",
+            "properties": [
+                {
+                    "name": "addProductFormView",
+                    "defaultValue": "false",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "editProductFormView",
+                    "defaultValue": "false",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "isLoggedIn",
+                    "defaultValue": "false",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                },
+                {
+                    "name": "loggedInFormView",
+                    "defaultValue": "false",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                }
+            ],
+            "methods": [],
+            "description": "",
+            "sourceCode": "import { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class StateService {\n  loggedInFormView:boolean = false;\n  addProductFormView:boolean = false;\n  editProductFormView:boolean = false;\n  isLoggedIn:boolean  = false;\n  get user(): any {\n    return sessionStorage.getItem('token');\n}\n  constructor() { }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 13
+            },
+            "accessors": {
+                "user": {
+                    "name": "user",
+                    "getSignature": {
+                        "name": "user",
+                        "type": "any",
+                        "returnType": "any",
+                        "line": 11
+                    }
+                }
+            },
+            "type": "injectable"
+        }
+    ],
+    "classes": [
+        {
+            "name": "AppPage",
+            "id": "class-AppPage-a0db91bfa3b9914e9048612074084ee6",
+            "file": "e2e/src/app.po.ts",
+            "type": "class",
+            "sourceCode": "import { browser, by, element } from 'protractor';\n\nexport class AppPage {\n  navigateTo(): Promise<unknown> {\n    return browser.get(browser.baseUrl) as Promise<unknown>;\n  }\n\n  getTitleText(): Promise<string> {\n    return element(by.css('app-root .content span')).getText() as Promise<string>;\n  }\n}\n",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "getTitleText",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Promise<string>",
+                    "typeParameters": [],
+                    "line": 8
+                },
+                {
+                    "name": "navigateTo",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Promise<unknown>",
+                    "typeParameters": [],
+                    "line": 4
+                }
+            ],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "CustomElement",
+            "id": "class-CustomElement-b6f5cff5f4410a18f0ca8c4982956b15",
+            "file": "src/app/lit-elements/cutom-button-elements.ts",
+            "type": "class",
+            "sourceCode": "import { LitElement, html, customElement, property, css } from 'lit-element';\r\n\r\nconsole.log('hello-world module');\r\n\r\n@customElement('custom-button')\r\nexport class CustomElement extends LitElement {\r\n\t@property() title;\r\n\tstatic get styles() {\r\n\t\t// Write styles in standard CSS\r\n\t\treturn css`\r\n        .btn{\r\n            background-color: #577BF9;\r\n            padding: 0.5em 2em;\r\n            font-size: 1rem;\r\n            border: none;\r\n            border-radius: 5px;\r\n            box-shadow: 2px 2px 3px #0000001f;\r\n            color: #ffffff;\r\n            outline: none;\r\n            cursor: pointer;\r\n        }\r\n\t\t`;\r\n\t}\r\n\trender() {\r\n\t\treturn html`<button class=\"btn\">${this.title}</button>`;\r\n\t}\r\n}\r\n// customElements.define('custom-button', CustomElement);\r\n",
+            "properties": [
+                {
+                    "name": "title",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 7,
+                    "decorators": [
+                        {
+                            "name": "property",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "render",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 24
+                }
+            ],
+            "indexSignatures": [],
+            "extends": "LitElement",
+            "accessors": {
+                "styles": {
+                    "name": "styles",
+                    "getSignature": {
+                        "name": "styles",
+                        "type": "",
+                        "returnType": "",
+                        "line": 8
+                    }
+                }
+            }
+        },
+        {
+            "name": "HideAddProductAction",
+            "id": "class-HideAddProductAction-300f989b2a7ddfad75a19c8f4c5be979",
+            "file": "src/app/store/action.ts",
+            "type": "class",
+            "sourceCode": "import { Action } from '@ngrx/store';\r\n\r\nexport const SHOW_LOGIN = 'SHOW_LOGIN';\r\nexport const HIDE_LOGIN = 'HIDE_LOGIN';\r\nexport const SHOW_ADD_PRODUCT = 'SHOW_ADD_PRODUCT';\r\nexport const HIDE_ADD_PRODUCT = 'HIDE_ADD_PRODUCT';\r\nexport const SHOW_EDIT_PRODUCT = 'SHOW_EDIT_PRODUCT';\r\nexport const HIDE_EDIT_PRODUCT = 'HIDE_EDIT_PRODUCT';\r\n\r\n\r\n\r\nexport class ShowLoginAction implements Action {\r\n readonly type = SHOW_LOGIN;\r\n\r\n constructor() { }\r\n}\r\n\r\nexport class HideLoginAction implements Action {\r\n  readonly type = HIDE_LOGIN;\r\n\r\n  constructor() { }\r\n}\r\nexport class ShowAddProductAction implements Action {\r\n readonly type = SHOW_ADD_PRODUCT;\r\n\r\n constructor() { }\r\n}\r\n\r\nexport class HideAddProductAction implements Action {\r\n  readonly type = HIDE_ADD_PRODUCT;\r\n\r\n  constructor() { }\r\n}\r\nexport class ShowEditProductAction implements Action {\r\n readonly type = SHOW_EDIT_PRODUCT;\r\n\r\n constructor() { }\r\n}\r\n\r\nexport class HideEditProductAction implements Action {\r\n  readonly type = HIDE_EDIT_PRODUCT;\r\n\r\n  constructor() { }\r\n}\r\n\r\nexport type Actions\r\n  = ShowLoginAction\r\n  | HideLoginAction\r\n  | ShowAddProductAction\r\n  | HideAddProductAction\r\n  | ShowEditProductAction\r\n  | HideEditProductAction",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 30
+            },
+            "properties": [
+                {
+                    "name": "type",
+                    "defaultValue": "HIDE_ADD_PRODUCT",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 30,
+                    "modifierKind": [
+                        132
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "implements": [
+                "Action"
+            ]
+        },
+        {
+            "name": "HideEditProductAction",
+            "id": "class-HideEditProductAction-300f989b2a7ddfad75a19c8f4c5be979",
+            "file": "src/app/store/action.ts",
+            "type": "class",
+            "sourceCode": "import { Action } from '@ngrx/store';\r\n\r\nexport const SHOW_LOGIN = 'SHOW_LOGIN';\r\nexport const HIDE_LOGIN = 'HIDE_LOGIN';\r\nexport const SHOW_ADD_PRODUCT = 'SHOW_ADD_PRODUCT';\r\nexport const HIDE_ADD_PRODUCT = 'HIDE_ADD_PRODUCT';\r\nexport const SHOW_EDIT_PRODUCT = 'SHOW_EDIT_PRODUCT';\r\nexport const HIDE_EDIT_PRODUCT = 'HIDE_EDIT_PRODUCT';\r\n\r\n\r\n\r\nexport class ShowLoginAction implements Action {\r\n readonly type = SHOW_LOGIN;\r\n\r\n constructor() { }\r\n}\r\n\r\nexport class HideLoginAction implements Action {\r\n  readonly type = HIDE_LOGIN;\r\n\r\n  constructor() { }\r\n}\r\nexport class ShowAddProductAction implements Action {\r\n readonly type = SHOW_ADD_PRODUCT;\r\n\r\n constructor() { }\r\n}\r\n\r\nexport class HideAddProductAction implements Action {\r\n  readonly type = HIDE_ADD_PRODUCT;\r\n\r\n  constructor() { }\r\n}\r\nexport class ShowEditProductAction implements Action {\r\n readonly type = SHOW_EDIT_PRODUCT;\r\n\r\n constructor() { }\r\n}\r\n\r\nexport class HideEditProductAction implements Action {\r\n  readonly type = HIDE_EDIT_PRODUCT;\r\n\r\n  constructor() { }\r\n}\r\n\r\nexport type Actions\r\n  = ShowLoginAction\r\n  | HideLoginAction\r\n  | ShowAddProductAction\r\n  | HideAddProductAction\r\n  | ShowEditProductAction\r\n  | HideEditProductAction",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 41
+            },
+            "properties": [
+                {
+                    "name": "type",
+                    "defaultValue": "HIDE_EDIT_PRODUCT",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 41,
+                    "modifierKind": [
+                        132
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "implements": [
+                "Action"
+            ]
+        },
+        {
+            "name": "HideLoginAction",
+            "id": "class-HideLoginAction-300f989b2a7ddfad75a19c8f4c5be979",
+            "file": "src/app/store/action.ts",
+            "type": "class",
+            "sourceCode": "import { Action } from '@ngrx/store';\r\n\r\nexport const SHOW_LOGIN = 'SHOW_LOGIN';\r\nexport const HIDE_LOGIN = 'HIDE_LOGIN';\r\nexport const SHOW_ADD_PRODUCT = 'SHOW_ADD_PRODUCT';\r\nexport const HIDE_ADD_PRODUCT = 'HIDE_ADD_PRODUCT';\r\nexport const SHOW_EDIT_PRODUCT = 'SHOW_EDIT_PRODUCT';\r\nexport const HIDE_EDIT_PRODUCT = 'HIDE_EDIT_PRODUCT';\r\n\r\n\r\n\r\nexport class ShowLoginAction implements Action {\r\n readonly type = SHOW_LOGIN;\r\n\r\n constructor() { }\r\n}\r\n\r\nexport class HideLoginAction implements Action {\r\n  readonly type = HIDE_LOGIN;\r\n\r\n  constructor() { }\r\n}\r\nexport class ShowAddProductAction implements Action {\r\n readonly type = SHOW_ADD_PRODUCT;\r\n\r\n constructor() { }\r\n}\r\n\r\nexport class HideAddProductAction implements Action {\r\n  readonly type = HIDE_ADD_PRODUCT;\r\n\r\n  constructor() { }\r\n}\r\nexport class ShowEditProductAction implements Action {\r\n readonly type = SHOW_EDIT_PRODUCT;\r\n\r\n constructor() { }\r\n}\r\n\r\nexport class HideEditProductAction implements Action {\r\n  readonly type = HIDE_EDIT_PRODUCT;\r\n\r\n  constructor() { }\r\n}\r\n\r\nexport type Actions\r\n  = ShowLoginAction\r\n  | HideLoginAction\r\n  | ShowAddProductAction\r\n  | HideAddProductAction\r\n  | ShowEditProductAction\r\n  | HideEditProductAction",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 19
+            },
+            "properties": [
+                {
+                    "name": "type",
+                    "defaultValue": "HIDE_LOGIN",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "modifierKind": [
+                        132
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "implements": [
+                "Action"
+            ]
+        },
+        {
+            "name": "ShowAddProductAction",
+            "id": "class-ShowAddProductAction-300f989b2a7ddfad75a19c8f4c5be979",
+            "file": "src/app/store/action.ts",
+            "type": "class",
+            "sourceCode": "import { Action } from '@ngrx/store';\r\n\r\nexport const SHOW_LOGIN = 'SHOW_LOGIN';\r\nexport const HIDE_LOGIN = 'HIDE_LOGIN';\r\nexport const SHOW_ADD_PRODUCT = 'SHOW_ADD_PRODUCT';\r\nexport const HIDE_ADD_PRODUCT = 'HIDE_ADD_PRODUCT';\r\nexport const SHOW_EDIT_PRODUCT = 'SHOW_EDIT_PRODUCT';\r\nexport const HIDE_EDIT_PRODUCT = 'HIDE_EDIT_PRODUCT';\r\n\r\n\r\n\r\nexport class ShowLoginAction implements Action {\r\n readonly type = SHOW_LOGIN;\r\n\r\n constructor() { }\r\n}\r\n\r\nexport class HideLoginAction implements Action {\r\n  readonly type = HIDE_LOGIN;\r\n\r\n  constructor() { }\r\n}\r\nexport class ShowAddProductAction implements Action {\r\n readonly type = SHOW_ADD_PRODUCT;\r\n\r\n constructor() { }\r\n}\r\n\r\nexport class HideAddProductAction implements Action {\r\n  readonly type = HIDE_ADD_PRODUCT;\r\n\r\n  constructor() { }\r\n}\r\nexport class ShowEditProductAction implements Action {\r\n readonly type = SHOW_EDIT_PRODUCT;\r\n\r\n constructor() { }\r\n}\r\n\r\nexport class HideEditProductAction implements Action {\r\n  readonly type = HIDE_EDIT_PRODUCT;\r\n\r\n  constructor() { }\r\n}\r\n\r\nexport type Actions\r\n  = ShowLoginAction\r\n  | HideLoginAction\r\n  | ShowAddProductAction\r\n  | HideAddProductAction\r\n  | ShowEditProductAction\r\n  | HideEditProductAction",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 24
+            },
+            "properties": [
+                {
+                    "name": "type",
+                    "defaultValue": "SHOW_ADD_PRODUCT",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "modifierKind": [
+                        132
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "implements": [
+                "Action"
+            ]
+        },
+        {
+            "name": "ShowEditProductAction",
+            "id": "class-ShowEditProductAction-300f989b2a7ddfad75a19c8f4c5be979",
+            "file": "src/app/store/action.ts",
+            "type": "class",
+            "sourceCode": "import { Action } from '@ngrx/store';\r\n\r\nexport const SHOW_LOGIN = 'SHOW_LOGIN';\r\nexport const HIDE_LOGIN = 'HIDE_LOGIN';\r\nexport const SHOW_ADD_PRODUCT = 'SHOW_ADD_PRODUCT';\r\nexport const HIDE_ADD_PRODUCT = 'HIDE_ADD_PRODUCT';\r\nexport const SHOW_EDIT_PRODUCT = 'SHOW_EDIT_PRODUCT';\r\nexport const HIDE_EDIT_PRODUCT = 'HIDE_EDIT_PRODUCT';\r\n\r\n\r\n\r\nexport class ShowLoginAction implements Action {\r\n readonly type = SHOW_LOGIN;\r\n\r\n constructor() { }\r\n}\r\n\r\nexport class HideLoginAction implements Action {\r\n  readonly type = HIDE_LOGIN;\r\n\r\n  constructor() { }\r\n}\r\nexport class ShowAddProductAction implements Action {\r\n readonly type = SHOW_ADD_PRODUCT;\r\n\r\n constructor() { }\r\n}\r\n\r\nexport class HideAddProductAction implements Action {\r\n  readonly type = HIDE_ADD_PRODUCT;\r\n\r\n  constructor() { }\r\n}\r\nexport class ShowEditProductAction implements Action {\r\n readonly type = SHOW_EDIT_PRODUCT;\r\n\r\n constructor() { }\r\n}\r\n\r\nexport class HideEditProductAction implements Action {\r\n  readonly type = HIDE_EDIT_PRODUCT;\r\n\r\n  constructor() { }\r\n}\r\n\r\nexport type Actions\r\n  = ShowLoginAction\r\n  | HideLoginAction\r\n  | ShowAddProductAction\r\n  | HideAddProductAction\r\n  | ShowEditProductAction\r\n  | HideEditProductAction",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 35
+            },
+            "properties": [
+                {
+                    "name": "type",
+                    "defaultValue": "SHOW_EDIT_PRODUCT",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 35,
+                    "modifierKind": [
+                        132
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "implements": [
+                "Action"
+            ]
+        },
+        {
+            "name": "ShowLoginAction",
+            "id": "class-ShowLoginAction-300f989b2a7ddfad75a19c8f4c5be979",
+            "file": "src/app/store/action.ts",
+            "type": "class",
+            "sourceCode": "import { Action } from '@ngrx/store';\r\n\r\nexport const SHOW_LOGIN = 'SHOW_LOGIN';\r\nexport const HIDE_LOGIN = 'HIDE_LOGIN';\r\nexport const SHOW_ADD_PRODUCT = 'SHOW_ADD_PRODUCT';\r\nexport const HIDE_ADD_PRODUCT = 'HIDE_ADD_PRODUCT';\r\nexport const SHOW_EDIT_PRODUCT = 'SHOW_EDIT_PRODUCT';\r\nexport const HIDE_EDIT_PRODUCT = 'HIDE_EDIT_PRODUCT';\r\n\r\n\r\n\r\nexport class ShowLoginAction implements Action {\r\n readonly type = SHOW_LOGIN;\r\n\r\n constructor() { }\r\n}\r\n\r\nexport class HideLoginAction implements Action {\r\n  readonly type = HIDE_LOGIN;\r\n\r\n  constructor() { }\r\n}\r\nexport class ShowAddProductAction implements Action {\r\n readonly type = SHOW_ADD_PRODUCT;\r\n\r\n constructor() { }\r\n}\r\n\r\nexport class HideAddProductAction implements Action {\r\n  readonly type = HIDE_ADD_PRODUCT;\r\n\r\n  constructor() { }\r\n}\r\nexport class ShowEditProductAction implements Action {\r\n readonly type = SHOW_EDIT_PRODUCT;\r\n\r\n constructor() { }\r\n}\r\n\r\nexport class HideEditProductAction implements Action {\r\n  readonly type = HIDE_EDIT_PRODUCT;\r\n\r\n  constructor() { }\r\n}\r\n\r\nexport type Actions\r\n  = ShowLoginAction\r\n  | HideLoginAction\r\n  | ShowAddProductAction\r\n  | HideAddProductAction\r\n  | ShowEditProductAction\r\n  | HideEditProductAction",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 13
+            },
+            "properties": [
+                {
+                    "name": "type",
+                    "defaultValue": "SHOW_LOGIN",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "modifierKind": [
+                        132
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "implements": [
+                "Action"
+            ]
+        }
+    ],
+    "directives": [],
+    "components": [
+        {
+            "name": "AddProductComponent",
+            "id": "component-AddProductComponent-66489afbfe91ea378401bf5d4e0dacd5",
+            "file": "src/app/components/add-product/add-product.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-add-product",
+            "styleUrls": [
+                "./add-product.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./add-product.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "mode",
+                    "line": 17
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "newItemEvent",
+                    "defaultValue": "new EventEmitter<any>()",
+                    "line": 16,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "addProductForm",
+                    "defaultValue": "new FormGroup({\n    heading: new FormControl(),\n    description: new FormControl(),\n    imageUrl: new FormControl(),\n    id: new FormControl()\n  })",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 24
+                },
+                {
+                    "name": "stateService",
+                    "type": "StateService",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "addProduct",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 35
+                },
+                {
+                    "name": "Cancel",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 44
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 31
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit, Input } from '@angular/core';\nimport { StateService } from 'src/app/services/state.service';\nimport { HttpService } from 'src/app/services/http.service';\nimport { FormGroup, FormControl } from '@angular/forms';\nimport { environment } from 'src/environments/environment';\nimport { Output, EventEmitter } from '@angular/core';\nimport { Store } from '@ngrx/store';\nimport * as loginActions from '../../store/action'\n\n@Component({\n  selector: 'app-add-product',\n  templateUrl: './add-product.component.html',\n  styleUrls: ['./add-product.component.scss']\n})\nexport class AddProductComponent implements OnInit {\n  @Output() newItemEvent = new EventEmitter<any>();\n  @Input() mode\n  constructor(\n    public stateService: StateService,\n    private httpService: HttpService,\n    private store: Store<any>\n  ) {}\n\n  addProductForm = new FormGroup({\n    heading: new FormControl(),\n    description: new FormControl(),\n    imageUrl: new FormControl(),\n    id: new FormControl()\n  });\n\n  ngOnInit(): void {\n    console.log(this.mode);\n    \n  }\n  addProduct(){\n    this.httpService.postSecured(environment.addProducts,this.addProductForm.value).subscribe(data =>{\n      console.log(data);\n      // this.stateService.addProductFormView = false;\n      this.store.dispatch(new loginActions.HideAddProductAction());\n      this.newItemEvent.emit(data);\n    })\n  }\n\n  Cancel(){\n    // this.stateService.addProductFormView = false;\n    this.store.dispatch(new loginActions.HideAddProductAction());\n  }\n  \n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../../theme/variable.scss\";\r\n\r\n.add-product-wrapper {\r\n  position: fixed;\r\n  z-index: 2;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100vw;\r\n  height: 100vh;\r\n  background-color: var(--bg-shadow);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n\r\n  .add-product-body{\r\n    width: 30%;\r\n    // height: 400px;\r\n    background-color: var(--white);\r\n    border-radius: 15px;\r\n    padding: 2em;\r\n    .heading{\r\n      h3{\r\n        color: var(--text-color);\r\n      }\r\n    }\r\n\r\n    .input-wrapper {\r\n      display: flex;\r\n      flex-direction: column;\r\n      margin: 2em 0;\r\n      label{\r\n        color: var(--text-color);\r\n      }\r\n      input { \r\n        margin-top: 1em;\r\n        border: none;\r\n        outline: none;\r\n        border-bottom: 1px solid;\r\n        font-size: 1.2rem;\r\n      }\r\n    }\r\n    .btn-wrapper{\r\n      display: flex;\r\n      width: 100%;\r\n      justify-content: space-between;\r\n    }\r\n  }\r\n}\r\n",
+                    "styleUrl": "./add-product.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "stateService",
+                        "type": "StateService"
+                    },
+                    {
+                        "name": "httpService",
+                        "type": "HttpService"
+                    },
+                    {
+                        "name": "store",
+                        "type": "Store<any>"
+                    }
+                ],
+                "line": 17,
+                "jsdoctags": [
+                    {
+                        "name": "stateService",
+                        "type": "StateService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "httpService",
+                        "type": "HttpService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "store",
+                        "type": "Store<any>",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"add-product-wrapper\">\n\n    <div class=\"add-product-body\">\n        <div class=\"heading\">\n            <h3>\n                Add Product\n            </h3>\n        </div>\n        <form [formGroup]=\"addProductForm\">\n\n            <div class=\"input-wrapper\">\n                <label for=\"username\">id</label>\n                <input type=\"text\" placeholder=\"Enter unique id\" formControlName=\"id\">\n            </div>\n\n        <div class=\"input-wrapper\">\n            <label for=\"heading\">heading</label>\n            <input type=\"text\" placeholder=\"Enter Heading\" formControlName=\"heading\">\n        </div>\n        <div class=\"input-wrapper\">\n            <label for=\"description\">description</label>\n            <input type=\"text\" placeholder=\"Enter description\" formControlName=\"description\">\n        </div>\n        <div class=\"input-wrapper\">\n            <label for=\"imageUrl\">imageUrl</label>\n            <input type=\"text\" placeholder=\"Enter imageUrl\" formControlName=\"imageUrl\">\n        </div>\n\n    </form>\n\n        <div class=\"btn-wrapper\">\n            <custom-button title = \"Add Product\" (click)= \"addProduct()\"></custom-button>\n            <custom-button title = \"Cancel\" (click)= \"Cancel()\"></custom-button>\n        </div>\n    </div>\n\n\n</div>\n"
+        },
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-5a9a12aa259da242273aabb8430570a9",
+            "file": "src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [
+                "./app.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "addProductFormView",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "editProductFormView",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "id",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                },
+                {
+                    "name": "loggedInFormView",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "products",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                },
+                {
+                    "name": "stateService",
+                    "type": "StateService",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "title",
+                    "defaultValue": "'test-assignment'",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "addItem",
+                    "args": [
+                        {
+                            "name": "newItem",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 50,
+                    "jsdoctags": [
+                        {
+                            "name": "newItem",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "editItem",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 56,
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getId",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 47,
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getProducts",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 40
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 29
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component,OnInit } from '@angular/core';\nimport { environment } from 'src/environments/environment';\nimport { HttpService } from './services/http.service';\nimport { StateService } from './services/state.service';\nimport { CustomElement } from './lit-elements/cutom-button-elements';\nimport { Store } from '@ngrx/store';\nimport * as loginActions from './store/action'\nconsole.assert(CustomElement !== undefined);\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent implements OnInit  {\n  title = 'test-assignment';\n  id:number\n  products: any;\n  public loggedInFormView: boolean;\n  public addProductFormView: boolean;\n  public editProductFormView: boolean;\n  constructor(\n    private httpService: HttpService,\n    public stateService: StateService,\n    private store: Store<any>\n  ) {\n    this.getProducts();\n  }\n\n  ngOnInit(): void {\n    this.store.subscribe((state) => {\n      console.log(state, 'app');\n      this.loggedInFormView = state.loginView.loggedInFormView;\n      this.addProductFormView = state.loginView.addProductFormView;\n      this.editProductFormView = state.loginView.editProductFormView;\n    })\n    // console.log(this.loggedInFormView$);\n\n  }\n\n  getProducts() {\n    this.httpService.getSecured(environment.getProducts).subscribe((data) => {\n      this.products = data;\n      console.log(this.products);\n    });\n  }\n\n  getId(id) {\n    console.log(id);\n  }\n  addItem(newItem: string) {\n    this.httpService.getSecured(environment.getProducts).subscribe((data) => {\n      this.products = data;\n      console.log(this.products);\n    });\n  }\n  editItem(id){\n    this.id=id\n    console.log(id);\n\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import '../theme/variable.scss';\r\n\r\nmain{\r\n    width: 100%;\r\n    min-height: 100vh;\r\n    background-color: var(--primary-bg);\r\n    display: flex;\r\n    justify-content: center;\r\n    padding-top: 2rem;\r\n    margin-top: 50px;\r\n    .container{\r\n        display: grid;\r\n        width: 80%;\r\n        grid-template-columns: repeat(auto-fit,minmax(250px,300px));\r\n        grid-auto-rows: auto;\r\n        grid-gap: 30px;\r\n        justify-content: center;\r\n    }\r\n\r\n}",
+                    "styleUrl": "./app.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "httpService",
+                        "type": "HttpService"
+                    },
+                    {
+                        "name": "stateService",
+                        "type": "StateService"
+                    },
+                    {
+                        "name": "store",
+                        "type": "Store<any>"
+                    }
+                ],
+                "line": 20,
+                "jsdoctags": [
+                    {
+                        "name": "httpService",
+                        "type": "HttpService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "stateService",
+                        "type": "StateService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "store",
+                        "type": "Store<any>",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<app-header></app-header>\n<app-login *ngIf=\"loggedInFormView\"></app-login>\n<app-add-product (newItemEvent)=\"addItem($event)\" *ngIf=\"addProductFormView\"></app-add-product>\n<app-edit-products id={{id}} (newItemEvent)=\"addItem($event)\" *ngIf=\"editProductFormView\"></app-edit-products>\n<main>\n  <div class=\"container\">\n    <ng-container *ngFor=\"let item of products\">\n      <app-card\n      [product]=\"item\"\n        (newItemEvent)=\"addItem($event)\"\n        (newItemIdEvent)=\"editItem($event)\"\n      >\n      </app-card>\n    </ng-container>\n  </div>\n</main>\n\n"
+        },
+        {
+            "name": "ButtonComponent",
+            "id": "component-ButtonComponent-64ad17e364f0d098f4b598c57249e5bb",
+            "file": "src/app/common-components/button/button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-button",
+            "styleUrls": [
+                "./button.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./button.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "title",
+                    "line": 9
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit, Input } from '@angular/core';\n\n@Component({\n  selector: 'app-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss']\n})\nexport class ButtonComponent implements OnInit {\n  @Input() title;\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import '../../../theme/variable.scss';\r\n    .login-btn{\r\n        background-color: var(--primary-color);\r\n        padding: 0.5em 2em;\r\n        font-size: 1rem;\r\n        border: none;\r\n        border-radius: 5px;\r\n        box-shadow: 2px 2px 3px #0000001f;\r\n        color: var(--white);\r\n        // margin: 0.5rem 1rem;\r\n        outline: none;\r\n        cursor: pointer;\r\n    }",
+                    "styleUrl": "./button.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 9
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<button class=\"login-btn\" >\n    {{title}}\n</button>\n"
+        },
+        {
+            "name": "CardComponent",
+            "id": "component-CardComponent-8ba35288b650bf7b1b00eb8520063b92",
+            "file": "src/app/components/card/card.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-card",
+            "styleUrls": [
+                "./card.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./card.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "product",
+                    "line": 18
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "newItemEvent",
+                    "defaultValue": "new EventEmitter<any>()",
+                    "line": 16,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "newItemIdEvent",
+                    "defaultValue": "new EventEmitter<any>()",
+                    "line": 17,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "stateService",
+                    "type": "StateService",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "deleteProduct",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 29,
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "edit",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 35,
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 25
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';\nimport { StateService } from 'src/app/services/state.service';\nimport { HttpService } from 'src/app/services/http.service';\nimport { environment } from 'src/environments/environment';\nimport { CustomElement } from '../../lit-elements/cutom-button-elements';\nimport { Store } from '@ngrx/store';\nimport * as loginActions from '../../store/action'\n\nconsole.assert(CustomElement !== undefined);\n@Component({\n  selector: 'app-card',\n  templateUrl: './card.component.html',\n  styleUrls: ['./card.component.scss']\n})\nexport class CardComponent implements OnInit {\n  @Output() newItemEvent = new EventEmitter<any>();\n  @Output() newItemIdEvent = new EventEmitter<any>();\n  @Input() product;\n\n  constructor(public stateService: StateService,private httpService:HttpService,private store: Store<any>) {\n    \n    JSON.stringify\n   }\n\n  ngOnInit(): void {\n    // console.log(\"products\",this.product);\n    \n  }\n  deleteProduct(id){\n    this.httpService.deleteSecured(environment.deleteProducts.replace('{id}',id)).subscribe(data =>{\n      console.log(data);\n      this.newItemEvent.emit(data);\n    })\n  }\n  edit(id){\n    // this.stateService.editProductFormView = true;\n    this.store.dispatch(new loginActions.ShowEditProductAction());\n    this.newItemIdEvent.emit(id);\n  }\n  \n  \n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../../theme/variable.scss\";\r\n\r\n.card {\r\n  width: 100%;\r\n  background-color: var(--white);\r\n  border-radius: 15px;\r\n  \r\n  img {\r\n    width: 100%;\r\n    height: 200px;\r\n    object-fit: cover;\r\n    border-radius: 15px 15px 0 0;\r\n  }\r\n\r\n  .info{\r\n    padding: 1em 1.5em 2em; \r\n    color: var(--text-color);\r\n    p{\r\n      margin-top: 1em;\r\n    }\r\n  }\r\n  .btn-wrapper{\r\n    display: flex;\r\n    width: 100%;\r\n    justify-content: space-around;\r\n    padding: 0 0 2rem;\r\n\r\n  }\r\n}\r\n",
+                    "styleUrl": "./card.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "stateService",
+                        "type": "StateService"
+                    },
+                    {
+                        "name": "httpService",
+                        "type": "HttpService"
+                    },
+                    {
+                        "name": "store",
+                        "type": "Store<any>"
+                    }
+                ],
+                "line": 18,
+                "jsdoctags": [
+                    {
+                        "name": "stateService",
+                        "type": "StateService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "httpService",
+                        "type": "HttpService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "store",
+                        "type": "Store<any>",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"card\">\n  <img src=\"{{ product.imageUrl }}\" alt=\"card image\" />\n  <div class=\"info\">\n    <h3>{{ product.heading }}</h3>\n    <p>\n      {{ product.description }}\n    </p>\n  </div>\n  <div class=\"btn-wrapper\" *ngIf=\"this.stateService.user\">\n    <custom-button  title=\"Edit\" (click)=\"edit(product.id)\"></custom-button >\n    <custom-button  title=\"Delete\" (click)=\"deleteProduct(product.id)\"></custom-button>\n  </div>\n</div>\n"
+        },
+        {
+            "name": "EditProductsComponent",
+            "id": "component-EditProductsComponent-997fa475b135c8d03dee209ad01734f6",
+            "file": "src/app/components/edit-products/edit-products.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-edit-products",
+            "styleUrls": [
+                "./edit-products.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./edit-products.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "id",
+                    "line": 19
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "newItemEvent",
+                    "defaultValue": "new EventEmitter<any>()",
+                    "line": 18,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "editProductForm",
+                    "defaultValue": "new FormGroup({\n\t\theading: new FormControl(),\n\t\tdescription: new FormControl(),\n\t\timageUrl: new FormControl(),\n\t\tid: new FormControl(),\n\t})",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 26
+                },
+                {
+                    "name": "stateService",
+                    "type": "StateService",
+                    "optional": false,
+                    "description": "",
+                    "line": 21,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "Cancel",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 61
+                },
+                {
+                    "name": "editProduct",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 47
+                },
+                {
+                    "name": "getProductById",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 37,
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 32
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit, Input } from '@angular/core';\nimport { StateService } from 'src/app/services/state.service';\nimport { HttpService } from 'src/app/services/http.service';\nimport { FormGroup, FormControl } from '@angular/forms';\nimport { environment } from 'src/environments/environment';\nimport { Output, EventEmitter } from '@angular/core';\nimport { CustomElement } from '../../lit-elements/cutom-button-elements';\nimport { Store } from '@ngrx/store';\nimport * as loginActions from '../../store/action'\n\nconsole.assert(CustomElement !== undefined);\n@Component({\n\tselector: 'app-edit-products',\n\ttemplateUrl: './edit-products.component.html',\n\tstyleUrls: ['./edit-products.component.scss'],\n})\nexport class EditProductsComponent implements OnInit {\n\t@Output() newItemEvent = new EventEmitter<any>();\n\t@Input() id;\n\tconstructor(\n\t\tpublic stateService: StateService,\n\t\tprivate httpService: HttpService,\n\t\tprivate store: Store<any>\n\t) {}\n\n\teditProductForm = new FormGroup({\n\t\theading: new FormControl(),\n\t\tdescription: new FormControl(),\n\t\timageUrl: new FormControl(),\n\t\tid: new FormControl(),\n\t});\n\tngOnInit(): void {\n\t\tconsole.log(this.id);\n\n\t\tthis.getProductById(this.id);\n\t}\n\tgetProductById(id) {\n\t\tthis.httpService\n\t\t\t.getSecured(environment.getProductsById.replace('{id}', id))\n\t\t\t.subscribe((data) => {\n\t\t\t\tconsole.log(data);\n\t\t\t\tthis.editProductForm.patchValue(data);\n\t\t\t\t// this.stateService.addProductFormView = false;\n\t\t\t\t// this.newItemEvent.emit(data);\n\t\t\t});\n\t}\n\teditProduct() {\n\t\tthis.httpService\n\t\t\t.patchSecured(\n\t\t\t\tenvironment.editProductsBy.replace('{id}', this.id),\n\t\t\t\tthis.editProductForm.value\n\t\t\t)\n\t\t\t.subscribe((data) => {\n\t\t\t\tconsole.log(data);\n\t\t\t\t// this.stateService.editProductFormView = false;\n\t\t\t\tthis.store.dispatch(new loginActions.HideEditProductAction());\n\t\t\t\tthis.newItemEvent.emit(data);\n\t\t\t});\n\t}\n\n\tCancel() {\n\t\tthis.store.dispatch(new loginActions.HideEditProductAction());\n\t\t// this.stateService.editProductFormView = false;\n\t}\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../../theme/variable.scss\";\r\n\r\n.edit-product-wrapper {\r\n  position: fixed;\r\n  z-index: 2;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100vw;\r\n  height: 100vh;\r\n  background-color: var(--bg-shadow);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  color: var(--text-color);\r\n  .edit-product-body{\r\n    width: 30%;\r\n    // height: 400px;\r\n    background-color: var(--white);\r\n    border-radius: 15px;\r\n    padding: 2em;\r\n\r\n    .input-wrapper {\r\n      display: flex;\r\n      flex-direction: column;\r\n      margin: 2em 0;\r\n      input { \r\n        margin-top: 1em;\r\n        border: none;\r\n        outline: none;\r\n        border-bottom: 1px solid;\r\n        font-size: 1.2rem;\r\n      }\r\n    }\r\n    .btn-wrapper{\r\n      display: flex;\r\n      width: 100%;\r\n      justify-content: space-between;\r\n    }\r\n  }\r\n}\r\n",
+                    "styleUrl": "./edit-products.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "stateService",
+                        "type": "StateService"
+                    },
+                    {
+                        "name": "httpService",
+                        "type": "HttpService"
+                    },
+                    {
+                        "name": "store",
+                        "type": "Store<any>"
+                    }
+                ],
+                "line": 19,
+                "jsdoctags": [
+                    {
+                        "name": "stateService",
+                        "type": "StateService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "httpService",
+                        "type": "HttpService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "store",
+                        "type": "Store<any>",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"edit-product-wrapper\">\n\n    <div class=\"edit-product-body\">\n        <div class=\"heading\">\n            <h3>\n                Edit Product\n            </h3>\n        </div>\n        <form [formGroup]=\"editProductForm\">\n\n            <div class=\"input-wrapper\">\n                <label for=\"username\">id</label>\n                <input type=\"text\" placeholder=\"Enter unique id\" formControlName=\"id\">\n            </div>\n\n        <div class=\"input-wrapper\">\n            <label for=\"heading\">heading</label>\n            <input type=\"text\" placeholder=\"Enter Heading\" formControlName=\"heading\">\n        </div>\n        <div class=\"input-wrapper\">\n            <label for=\"description\">description</label>\n            <input type=\"text\" placeholder=\"Enter description\" formControlName=\"description\">\n        </div>\n        <div class=\"input-wrapper\">\n            <label for=\"imageUrl\">imageUrl</label>\n            <input type=\"text\" placeholder=\"Enter imageUrl\" formControlName=\"imageUrl\">\n        </div>\n\n    </form>\n\n        <div class=\"btn-wrapper\">\n            <custom-button  title = \"Edit Product\" (click)= \"editProduct()\"></custom-button >\n            <custom-button  title = \"Cancel\" (click)= \"Cancel()\"></custom-button>\n        </div>\n    </div>\n\n\n</div>\n"
+        },
+        {
+            "name": "HeaderComponent",
+            "id": "component-HeaderComponent-bd901ece1cf949c2ed68b151a5186328",
+            "file": "src/app/components/header/header.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-header",
+            "styleUrls": [
+                "./header.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./header.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "loggedInFormView",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 14,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "stateService",
+                    "type": "StateService",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "addProduct",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 58
+                },
+                {
+                    "name": "logout",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 50
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 19
+                },
+                {
+                    "name": "openLoginFrom",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 46
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { StateService } from 'src/app/services/state.service';\nimport { Store } from '@ngrx/store';\nimport { CustomElement } from '../../lit-elements/cutom-button-elements';\nimport { Observable } from 'rxjs';\nimport * as loginActions from '../../store/action'\nconsole.assert(CustomElement !== undefined);\n@Component({\n  selector: 'app-header',\n  templateUrl: './header.component.html',\n  styleUrls: ['./header.component.scss'],\n})\nexport class HeaderComponent implements OnInit {\n  public loggedInFormView: boolean\n  constructor(public stateService: StateService,private store: Store<any>) {\n    // this.loggedInFormView$ = store.select('loginView');\n  }\n\n  ngOnInit(): void {\n    this.store.subscribe((state) => {\n      console.log(state, 'header');\n    })\n    // console.log(this.loggedInFormView$);\n\n    //toggle\n  let checkbox = document.querySelector('input[name=theme]');\n\n  checkbox.addEventListener('change', function() {\n      if(this.checked) {\n          trans()\n          document.documentElement.setAttribute('data-theme', 'dark')\n      } else {\n          trans()\n          document.documentElement.setAttribute('data-theme', 'light')\n      }\n  })\n\n  let trans = () => {\n      document.documentElement.classList.add('transition');\n      window.setTimeout(() => {\n          document.documentElement.classList.remove('transition')\n      }, 1000)\n  }\n\n  }\n  openLoginFrom() {\n    // this.stateService.loggedInFormView = true;\n    this.store.dispatch(new loginActions.ShowLoginAction());\n  }\n  logout() {\n    // this.stateService.isLoggedIn = false;\n    this.store.dispatch(new loginActions.HideLoginAction());\n\n    console.log('login', this.stateService.isLoggedIn);\n\n    sessionStorage.clear();\n  }\n  addProduct(){\n    // this.stateService.addProductFormView = true;\n    this.store.dispatch(new loginActions.ShowAddProductAction());\n  }\n\n\n  \n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../../theme/variable.scss\";\r\n\r\nheader {\r\n  width: 100%;\r\n  height: 50px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: flex-end;\r\n  position: fixed;\r\n  top: 0;\r\n  background-color: var(--white);\r\n  padding: 0 1rem;\r\n  .btn-wrapper {\r\n    margin: 0 0.5rem;\r\n  }\r\n\r\n  input[type=checkbox]{\r\n    height: 0;\r\n    width: 0;\r\n    visibility: hidden;\r\n  }\r\n  \r\n  label {\r\n    cursor: pointer;\r\n    text-indent: -9999px;\r\n    width: 52px;\r\n    height: 27px;\r\n    background: grey;\r\n    float: right;\r\n    border-radius: 100px;\r\n    position: relative;\r\n  }\r\n  \r\n  label:after {\r\n    content: '';\r\n    position: absolute;\r\n    top: 3px;\r\n    left: 3px;\r\n    width: 20px;\r\n    height: 20px;\r\n    background: #fff;\r\n    border-radius: 90px;\r\n    transition: 0.3s;\r\n  }\r\n  \r\n  input:checked + label {\r\n    background: var(--color-headings);\r\n  }\r\n  \r\n  input:checked + label:after {\r\n    left: calc(100% - 5px);\r\n    transform: translateX(-100%);\r\n  }\r\n  \r\n  label:active:after {\r\n    width: 45px;\r\n  }\r\n  \r\n  html.transition,\r\n  html.transition *,\r\n  html.transition *:before,\r\n  html.transition *:after {\r\n    transition: all 750ms !important;\r\n    transition-delay: 0 !important;\r\n  }\r\n}\r\n",
+                    "styleUrl": "./header.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "stateService",
+                        "type": "StateService"
+                    },
+                    {
+                        "name": "store",
+                        "type": "Store<any>"
+                    }
+                ],
+                "line": 14,
+                "jsdoctags": [
+                    {
+                        "name": "stateService",
+                        "type": "StateService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "store",
+                        "type": "Store<any>",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<header>\r\n  <div class=\"toggle-container\">\r\n    <input type=\"checkbox\" id=\"switch\" name=\"theme\" /><label for=\"switch\">Toggle</label>\r\n</div>\r\n\t<div class=\"btn-wrapper\" *ngIf=\"!this.stateService.user\">\r\n\t\t<custom-button title=\"Login\" (click)=\"openLoginFrom()\"></custom-button>\r\n\t</div>\r\n\t<div class=\"btn-wrapper\" *ngIf=\"this.stateService.user\">\r\n\t\t<custom-button\r\n\t\t\ttitle=\"Add Product\"\r\n\t\t\t(click)=\"addProduct()\"\r\n\t\t></custom-button>\r\n\t</div>\r\n\t<div class=\"btn-wrapper\" *ngIf=\"this.stateService.user\">\r\n\t\t<custom-button title=\"Logout\" (click)=\"logout()\"></custom-button>\r\n\t</div>\r\n\t<!-- <div class=\"btn-wrapper\" *ngIf=\"!this.stateService.user\">\r\n    <app-button\r\n      title=\"Login\"\r\n      (click)=\"openLoginFrom()\"\r\n    ></app-button>\r\n  </div>\r\n  <div class=\"btn-wrapper\" *ngIf=\"this.stateService.user\">\r\n    <app-button\r\n      title=\"Add Product\"\r\n      (click)=\"addProduct()\"\r\n    ></app-button>\r\n  </div>\r\n  <div class=\"btn-wrapper\" *ngIf=\"this.stateService.user\">\r\n    <app-button\r\n      title=\"Logout\"\r\n      (click)=\"logout()\"\r\n    ></app-button>\r\n  </div> -->\r\n</header>\r\n"
+        },
+        {
+            "name": "LoginComponent",
+            "id": "component-LoginComponent-baa5579108a609ae6196b1376d37baaa",
+            "file": "src/app/components/login/login.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-login",
+            "styleUrls": [
+                "./login.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./login.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "loginform",
+                    "defaultValue": "new FormGroup({\n    email: new FormControl(),\n    password: new FormControl(),\n  })",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "stateService",
+                    "type": "StateService",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "login",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 26
+                },
+                {
+                    "name": "logout",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 39
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 25
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { StateService } from 'src/app/services/state.service';\nimport { FormGroup, FormControl } from '@angular/forms';\nimport { HttpService } from 'src/app/services/http.service';\nimport { environment } from 'src/environments/environment';\nimport { Store } from '@ngrx/store';\nimport * as loginActions from '../../store/action'\n@Component({\n  selector: 'app-login',\n  templateUrl: './login.component.html',\n  styleUrls: ['./login.component.scss'],\n})\nexport class LoginComponent implements OnInit {\n  constructor(\n    public stateService: StateService,\n    private httpService: HttpService,\n    private store: Store<any>\n  ) {}\n\n  loginform = new FormGroup({\n    email: new FormControl(),\n    password: new FormControl(),\n  });\n\n  ngOnInit(): void {}\n  login() {\n    this.httpService.postLogin(environment.login,this.loginform.value).subscribe(data =>{\n      console.log(data);\n      sessionStorage.setItem('token',data.access_token);\n      this.store.dispatch(new loginActions.HideLoginAction());\n      // this.stateService.loggedInFormView = false;\n      this.stateService.isLoggedIn = true;\n      console.log(\"login\",this.stateService.isLoggedIn);\n      \n    } )\n\n  }\n\n  logout(){\n    // this.stateService.isLoggedIn = false;\n    console.log(\"login\",this.stateService.isLoggedIn);\n\n    \n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../../theme/variable.scss\";\r\n\r\n.login-wrapper {\r\n  position: fixed;\r\n  z-index: 2;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100vw;\r\n  height: 100vh;\r\n  background-color: var(--bg-shadow);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n\r\n  .login-body {\r\n    width: 30%;\r\n    // height: 400px;\r\n    background-color: var(--white);\r\n    border-radius: 15px;\r\n    padding: 2em;\r\n\r\n    .input-wrapper {\r\n      display: flex;\r\n      flex-direction: column;\r\n      margin: 2em 0;\r\n      input { \r\n        margin-top: 1em;\r\n        border: none;\r\n        outline: none;\r\n        border-bottom: 1px solid;\r\n        font-size: 1.2rem;\r\n      }\r\n    }\r\n    .btn-wrapper{\r\n\r\n    }\r\n  }\r\n}\r\n",
+                    "styleUrl": "./login.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "stateService",
+                        "type": "StateService"
+                    },
+                    {
+                        "name": "httpService",
+                        "type": "HttpService"
+                    },
+                    {
+                        "name": "store",
+                        "type": "Store<any>"
+                    }
+                ],
+                "line": 13,
+                "jsdoctags": [
+                    {
+                        "name": "stateService",
+                        "type": "StateService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "httpService",
+                        "type": "HttpService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "store",
+                        "type": "Store<any>",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"login-wrapper\">\n\n    <div class=\"login-body\">\n        <div class=\"heading\">\n            <h3>\n                Login\n            </h3>\n        </div>\n        <form [formGroup]=\"loginform\">\n\n        <div class=\"input-wrapper\">\n            <label for=\"username\">Email</label>\n            <input type=\"email\" placeholder=\"Enter your email\" formControlName=\"email\">\n        </div>\n        <div class=\"input-wrapper\">\n            <label for=\"username\">Password</label>\n            <input type=\"password\" placeholder=\"Enter your password\" formControlName=\"password\">\n        </div>\n    </form>\n\n        <div class=\"btn-wrapper\">\n            <app-button title = \"Login\" (click)= \"login()\"></app-button>\n        </div>\n    </div>\n\n\n</div>\n"
+        }
+    ],
+    "modules": [
+        {
+            "name": "AppModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AddProductComponent"
+                        },
+                        {
+                            "name": "AppComponent"
+                        },
+                        {
+                            "name": "ButtonComponent"
+                        },
+                        {
+                            "name": "CardComponent"
+                        },
+                        {
+                            "name": "EditProductsComponent"
+                        },
+                        {
+                            "name": "HeaderComponent"
+                        },
+                        {
+                            "name": "LoginComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "AppRoutingModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "AppRoutingModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "CommonBtn",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/common-button.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/test.ts",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.prod.ts",
+                "type": "object",
+                "defaultValue": "{\n  production: true\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.ts",
+                "type": "object",
+                "defaultValue": "{\n  production: false,\n\n  login: serverBaseUrl + '/auth/login',\n  getProducts: serverBaseUrl + '/products',\n  addProducts: serverBaseUrl + '/products',\n  deleteProducts: serverBaseUrl + '/products/{id}',\n  getProductsById: serverBaseUrl + '/products/{id}',\n  editProductsBy: serverBaseUrl + '/products/{id}',\n}"
+            },
+            {
+                "name": "HIDE_ADD_PRODUCT",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/store/action.ts",
+                "type": "string",
+                "defaultValue": "'HIDE_ADD_PRODUCT'"
+            },
+            {
+                "name": "HIDE_EDIT_PRODUCT",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/store/action.ts",
+                "type": "string",
+                "defaultValue": "'HIDE_EDIT_PRODUCT'"
+            },
+            {
+                "name": "HIDE_LOGIN",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/store/action.ts",
+                "type": "string",
+                "defaultValue": "'HIDE_LOGIN'"
+            },
+            {
+                "name": "initialState",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/store/reducer.ts",
+                "type": "State",
+                "defaultValue": "{\r\n    loggedInFormView : false,\r\n    addProductFormView : false,\r\n    editProductFormView : false,\r\n  }"
+            },
+            {
+                "name": "litButton",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/lit-button.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/test.ts",
+                "type": "literal type"
+            },
+            {
+                "name": "serverBaseUrl",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.ts",
+                "type": "string",
+                "defaultValue": "'http://localhost:8000'"
+            },
+            {
+                "name": "SHOW_ADD_PRODUCT",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/store/action.ts",
+                "type": "string",
+                "defaultValue": "'SHOW_ADD_PRODUCT'"
+            },
+            {
+                "name": "SHOW_EDIT_PRODUCT",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/store/action.ts",
+                "type": "string",
+                "defaultValue": "'SHOW_EDIT_PRODUCT'"
+            },
+            {
+                "name": "SHOW_LOGIN",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/store/action.ts",
+                "type": "string",
+                "defaultValue": "'SHOW_LOGIN'"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/common-button.stories.ts",
+                "type": "Story<ButtonComponent>",
+                "defaultValue": "(args: ButtonComponent) => ({\r\n    component: ButtonComponent,\r\n    props: args,\r\n  })"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/lit-button.stories.ts",
+                "type": "Story<CustomElement>",
+                "defaultValue": "(args: CustomElement) => ({\r\n    component: CustomElement,\r\n    props: args,\r\n  })"
+            }
+        ],
+        "functions": [
+            {
+                "name": "reducer",
+                "file": "src/app/store/reducer.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "description": "",
+                "args": [
+                    {
+                        "name": "state",
+                        "type": ""
+                    },
+                    {
+                        "name": "action"
+                    }
+                ],
+                "returnType": "State",
+                "jsdoctags": [
+                    {
+                        "name": "state",
+                        "type": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "action",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        ],
+        "typealiases": [
+            {
+                "name": "Actions",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "ShowLoginAction | HideLoginAction | ShowAddProductAction | HideAddProductAction | ShowEditProductAction | HideEditProductAction",
+                "file": "src/app/store/action.ts",
+                "description": "",
+                "kind": 168
+            }
+        ],
+        "enumerations": [],
+        "groupedVariables": {
+            "src/stories/common-button.stories.ts": [
+                {
+                    "name": "CommonBtn",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/common-button.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/common-button.stories.ts",
+                    "type": "Story<ButtonComponent>",
+                    "defaultValue": "(args: ButtonComponent) => ({\r\n    component: ButtonComponent,\r\n    props: args,\r\n  })"
+                }
+            ],
+            "src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/test.ts",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/test.ts",
+                    "type": "literal type"
+                }
+            ],
+            "src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.prod.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true\n}"
+                }
+            ],
+            "src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: false,\n\n  login: serverBaseUrl + '/auth/login',\n  getProducts: serverBaseUrl + '/products',\n  addProducts: serverBaseUrl + '/products',\n  deleteProducts: serverBaseUrl + '/products/{id}',\n  getProductsById: serverBaseUrl + '/products/{id}',\n  editProductsBy: serverBaseUrl + '/products/{id}',\n}"
+                },
+                {
+                    "name": "serverBaseUrl",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "type": "string",
+                    "defaultValue": "'http://localhost:8000'"
+                }
+            ],
+            "src/app/store/action.ts": [
+                {
+                    "name": "HIDE_ADD_PRODUCT",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/store/action.ts",
+                    "type": "string",
+                    "defaultValue": "'HIDE_ADD_PRODUCT'"
+                },
+                {
+                    "name": "HIDE_EDIT_PRODUCT",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/store/action.ts",
+                    "type": "string",
+                    "defaultValue": "'HIDE_EDIT_PRODUCT'"
+                },
+                {
+                    "name": "HIDE_LOGIN",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/store/action.ts",
+                    "type": "string",
+                    "defaultValue": "'HIDE_LOGIN'"
+                },
+                {
+                    "name": "SHOW_ADD_PRODUCT",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/store/action.ts",
+                    "type": "string",
+                    "defaultValue": "'SHOW_ADD_PRODUCT'"
+                },
+                {
+                    "name": "SHOW_EDIT_PRODUCT",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/store/action.ts",
+                    "type": "string",
+                    "defaultValue": "'SHOW_EDIT_PRODUCT'"
+                },
+                {
+                    "name": "SHOW_LOGIN",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/store/action.ts",
+                    "type": "string",
+                    "defaultValue": "'SHOW_LOGIN'"
+                }
+            ],
+            "src/app/store/reducer.ts": [
+                {
+                    "name": "initialState",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/store/reducer.ts",
+                    "type": "State",
+                    "defaultValue": "{\r\n    loggedInFormView : false,\r\n    addProductFormView : false,\r\n    editProductFormView : false,\r\n  }"
+                }
+            ],
+            "src/stories/lit-button.stories.ts": [
+                {
+                    "name": "litButton",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/lit-button.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/lit-button.stories.ts",
+                    "type": "Story<CustomElement>",
+                    "defaultValue": "(args: CustomElement) => ({\r\n    component: CustomElement,\r\n    props: args,\r\n  })"
+                }
+            ]
+        },
+        "groupedFunctions": {
+            "src/app/store/reducer.ts": [
+                {
+                    "name": "reducer",
+                    "file": "src/app/store/reducer.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "state",
+                            "type": ""
+                        },
+                        {
+                            "name": "action"
+                        }
+                    ],
+                    "returnType": "State",
+                    "jsdoctags": [
+                        {
+                            "name": "state",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "action",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {
+            "src/app/store/action.ts": [
+                {
+                    "name": "Actions",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "ShowLoginAction | HideLoginAction | ShowAddProductAction | HideAddProductAction | ShowEditProductAction | HideEditProductAction",
+                    "file": "src/app/store/action.ts",
+                    "description": "",
+                    "kind": 168
+                }
+            ]
+        }
+    },
+    "routes": {
+        "name": "<root>",
+        "kind": "module",
+        "className": "AppModule",
+        "children": [
+            {
+                "name": "routes",
+                "filename": "src/app/app-routing.module.ts",
+                "module": "AppRoutingModule",
+                "children": [],
+                "kind": "module"
+            }
+        ]
+    },
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "e2e/src/app.po.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "AppPage",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/14",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/common-components/button/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ButtonComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/add-product/add-product.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AddProductComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/card/card.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CardComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/edit-products/edit-products.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "EditProductsComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/10",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/header/header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HeaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/login/login.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LoginComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/lit-elements/cutom-button-elements.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "CustomElement",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/services/http.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "HttpService",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/services/state.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "StateService",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/store/action.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "HideAddProductAction",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/store/action.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "HideEditProductAction",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/store/action.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "HideLoginAction",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/store/action.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "ShowAddProductAction",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/store/action.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "ShowEditProductAction",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/store/action.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "ShowLoginAction",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/store/action.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "HIDE_ADD_PRODUCT",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/store/action.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "HIDE_EDIT_PRODUCT",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/store/action.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "HIDE_LOGIN",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/store/action.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SHOW_ADD_PRODUCT",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/store/action.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SHOW_EDIT_PRODUCT",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/store/action.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SHOW_LOGIN",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/store/modal.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "State",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/store/reducer.ts",
+                "type": "function",
+                "linksubtype": "function",
+                "name": "reducer",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/store/reducer.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "initialState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.prod.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "serverBaseUrl",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/common-button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "CommonBtn",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/common-button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/lit-button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "litButton",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/lit-button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}

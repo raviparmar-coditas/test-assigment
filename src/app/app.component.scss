@@ -1,11 +1,12 @@
 @import '../theme/variable.scss';
 
 main{
-    width: 100vw;
-    background-color: $primary-bg;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--primary-bg);
     display: flex;
     justify-content: center;
-    padding: 2rem 0;
+    padding-top: 2rem;
     margin-top: 50px;
     .container{
         display: grid;

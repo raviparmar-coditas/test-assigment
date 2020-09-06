@@ -7,3 +7,29 @@ box-sizing: border-box;
 font-family: 'Roboto', sans-serif;
 }
 
+html {
+    // basic color
+    --black: #000000;
+    --white: #ffffff;
+    
+    
+    --primary-color : #577BF9; 
+    --primary-bg : #F6F6FA;
+    --text-color:#000000;
+    
+    --bg-shadow : #0000004d;
+    --color-headings: #0077FF;
+    }
+    
+    html[data-theme='dark'] {
+        --black: #ffffff;
+        --white: #000000;
+        --text-color:#ffffff;
+        
+        --primary-color : #577BF9;
+        --primary-bg : #555555;
+        
+        --bg-shadow : #0000004d;
+        --color-headings: #3694FF;
+    }
+

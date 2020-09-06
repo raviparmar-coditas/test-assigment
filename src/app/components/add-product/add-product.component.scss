@@ -7,7 +7,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: $bg-shadow;
+  background-color: var(--bg-shadow);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,14 +15,22 @@
   .add-product-body{
     width: 30%;
     // height: 400px;
-    background-color: $white;
+    background-color: var(--white);
     border-radius: 15px;
     padding: 2em;
+    .heading{
+      h3{
+        color: var(--text-color);
+      }
+    }
 
     .input-wrapper {
       display: flex;
       flex-direction: column;
       margin: 2em 0;
+      label{
+        color: var(--text-color);
+      }
       input { 
         margin-top: 1em;
         border: none;

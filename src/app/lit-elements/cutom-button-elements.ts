@@ -25,3 +25,4 @@ export class CustomElement extends LitElement {
 		return html`<button class="btn">${this.title}</button>`;
 	}
 }
+// customElements.define('custom-button', CustomElement);

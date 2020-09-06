@@ -22,6 +22,26 @@ export class HeaderComponent implements OnInit {
     })
     // console.log(this.loggedInFormView$);
 
+    //toggle
+  let checkbox = document.querySelector('input[name=theme]');
+
+  checkbox.addEventListener('change', function() {
+      if(this.checked) {
+          trans()
+          document.documentElement.setAttribute('data-theme', 'dark')
+      } else {
+          trans()
+          document.documentElement.setAttribute('data-theme', 'light')
+      }
+  })
+
+  let trans = () => {
+      document.documentElement.classList.add('transition');
+      window.setTimeout(() => {
+          document.documentElement.classList.remove('transition')
+      }, 1000)
+  }
+
   }
   openLoginFrom() {
     // this.stateService.loggedInFormView = true;
@@ -39,4 +59,7 @@ export class HeaderComponent implements OnInit {
     // this.stateService.addProductFormView = true;
     this.store.dispatch(new loginActions.ShowAddProductAction());
   }
+
+
+  
 }

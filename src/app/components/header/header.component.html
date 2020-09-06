@@ -1,4 +1,7 @@
 <header>
+  <div class="toggle-container">
+    <input type="checkbox" id="switch" name="theme" /><label for="switch">Toggle</label>
+</div>
 	<div class="btn-wrapper" *ngIf="!this.stateService.user">
 		<custom-button title="Login" (click)="openLoginFrom()"></custom-button>
 	</div>
