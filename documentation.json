@@ -1795,7 +1795,7 @@
                 "subtype": "variable",
                 "file": "src/stories/lit-button.stories.ts",
                 "type": "Story<CustomElement>",
-                "defaultValue": "(args: CustomElement) => ({\r\n    component: CustomElement,\r\n    props: args,\r\n  })"
+                "defaultValue": "(args: CustomElement) => ({\r\n    component: CustomElement,\r\n    props: args,    \r\n  })"
             }
         ],
         "functions": [
@@ -1983,7 +1983,7 @@
                     "subtype": "variable",
                     "file": "src/stories/lit-button.stories.ts",
                     "type": "Story<CustomElement>",
-                    "defaultValue": "(args: CustomElement) => ({\r\n    component: CustomElement,\r\n    props: args,\r\n  })"
+                    "defaultValue": "(args: CustomElement) => ({\r\n    component: CustomElement,\r\n    props: args,    \r\n  })"
                 }
             ]
         },
