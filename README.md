@@ -6,11 +6,11 @@ yes
 # NgRx for Sate Management
 yes 
 # Test Cases For All Component Using Jest
-No
+yes integrated test cases not written
 # Application is accessible
 No
 # Storybook
-yes 
+yes integrated still working on
 # Theme [Light | Dark]
 yes
 # lit-Element
