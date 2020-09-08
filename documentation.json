@@ -38,7 +38,7 @@
     "injectables": [
         {
             "name": "HttpService",
-            "id": "injectable-HttpService-e49ae71488a02002be708ee477d62572",
+            "id": "injectable-HttpService-466990da741e23c5517306728dbfeae8",
             "file": "src/app/services/http.service.ts",
             "properties": [],
             "methods": [
@@ -195,7 +195,7 @@
                 }
             ],
             "description": "",
-            "sourceCode": "import { Injectable } from '@angular/core';\nimport { HttpClient, HttpHeaders } from '@angular/common/http';\nimport { Observable } from 'rxjs';\n@Injectable({\n  providedIn: 'root'\n})\nexport class HttpService {\n\n  constructor(private httpClient: HttpClient) { }\n  getHeader() {\n    let json = sessionStorage.getItem('token');\n    if (json) {\n      let headers = new HttpHeaders({\n        'Content-Type': 'application/json',\n        'Authorization': `Bearer ${json}`\n      });\n      return { headers: headers }\n\n    }\n    return { headers: null }\n  };\n\n  getSecured(url): Observable<any> {\n    return this.httpClient.get(url);\n  }\n\n  postSecured(url, payload): Observable<any> {\n    return this.httpClient.post(url, payload, this.getHeader());\n  }\n\n  deleteSecured(url): Observable<any> {\n    return this.httpClient.delete(url,this.getHeader());\n  }\n\n  patchSecured(url, payload) {\n    return this.httpClient.patch(url, payload,this.getHeader());\n  }\n\n  postLogin(url, payload): Observable<any> {\n    return this.httpClient.post(url, payload);\n  }\n}\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { HttpClient, HttpHeaders } from '@angular/common/http';\r\nimport { Observable } from 'rxjs';\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class HttpService {\r\n\r\n  constructor(private httpClient: HttpClient) { }\r\n  getHeader() {\r\n    let json = sessionStorage.getItem('token');\r\n    if (json) {\r\n      let headers = new HttpHeaders({\r\n        'Content-Type': 'application/json',\r\n        'Authorization': `Bearer ${json}`\r\n      });\r\n      return { headers: headers }\r\n\r\n    }\r\n    return { headers: null }\r\n  };\r\n\r\n  getSecured(url): Observable<any> {\r\n    return this.httpClient.get(url);\r\n  }\r\n\r\n  postSecured(url, payload): Observable<any> {\r\n    return this.httpClient.post(url, payload, this.getHeader());\r\n  }\r\n\r\n  deleteSecured(url): Observable<any> {\r\n    return this.httpClient.delete(url,this.getHeader());\r\n  }\r\n\r\n  patchSecured(url, payload) {\r\n    return this.httpClient.patch(url, payload,this.getHeader());\r\n  }\r\n\r\n  postLogin(url, payload): Observable<any> {\r\n    return this.httpClient.post(url, payload);\r\n  }\r\n}\r\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -220,7 +220,7 @@
         },
         {
             "name": "StateService",
-            "id": "injectable-StateService-e571a31d917efbd60b5291794b081446",
+            "id": "injectable-StateService-32dc25560ec535c36c24e116b48e9bb6",
             "file": "src/app/services/state.service.ts",
             "properties": [
                 {
@@ -258,7 +258,7 @@
             ],
             "methods": [],
             "description": "",
-            "sourceCode": "import { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class StateService {\n  loggedInFormView:boolean = false;\n  addProductFormView:boolean = false;\n  editProductFormView:boolean = false;\n  isLoggedIn:boolean  = false;\n  get user(): any {\n    return sessionStorage.getItem('token');\n}\n  constructor() { }\n}\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class StateService {\r\n  loggedInFormView:boolean = false;\r\n  addProductFormView:boolean = false;\r\n  editProductFormView:boolean = false;\r\n  isLoggedIn:boolean  = false;\r\n  get user(): any {\r\n    return sessionStorage.getItem('token');\r\n}\r\n  constructor() { }\r\n}\r\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -282,10 +282,10 @@
     "classes": [
         {
             "name": "AppPage",
-            "id": "class-AppPage-a0db91bfa3b9914e9048612074084ee6",
+            "id": "class-AppPage-b0dda38f970a6690b77b35dfb293b3ac",
             "file": "e2e/src/app.po.ts",
             "type": "class",
-            "sourceCode": "import { browser, by, element } from 'protractor';\n\nexport class AppPage {\n  navigateTo(): Promise<unknown> {\n    return browser.get(browser.baseUrl) as Promise<unknown>;\n  }\n\n  getTitleText(): Promise<string> {\n    return element(by.css('app-root .content span')).getText() as Promise<string>;\n  }\n}\n",
+            "sourceCode": "import { browser, by, element } from 'protractor';\r\n\r\nexport class AppPage {\r\n  navigateTo(): Promise<unknown> {\r\n    return browser.get(browser.baseUrl) as Promise<unknown>;\r\n  }\r\n\r\n  getTitleText(): Promise<string> {\r\n    return element(by.css('app-root .content span')).getText() as Promise<string>;\r\n  }\r\n}\r\n",
             "properties": [],
             "methods": [
                 {
@@ -571,7 +571,7 @@
     "components": [
         {
             "name": "AddProductComponent",
-            "id": "component-AddProductComponent-66489afbfe91ea378401bf5d4e0dacd5",
+            "id": "component-AddProductComponent-16c149ce1865d1610e3833b505406f4a",
             "file": "src/app/components/add-product/add-product.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -604,7 +604,7 @@
             "propertiesClass": [
                 {
                     "name": "addProductForm",
-                    "defaultValue": "new FormGroup({\n    heading: new FormControl(),\n    description: new FormControl(),\n    imageUrl: new FormControl(),\n    id: new FormControl()\n  })",
+                    "defaultValue": "new FormGroup({\r\n    heading: new FormControl(),\r\n    description: new FormControl(),\r\n    imageUrl: new FormControl(),\r\n    id: new FormControl()\r\n  })",
                     "type": "",
                     "optional": false,
                     "description": "",
@@ -652,11 +652,11 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, Input } from '@angular/core';\nimport { StateService } from 'src/app/services/state.service';\nimport { HttpService } from 'src/app/services/http.service';\nimport { FormGroup, FormControl } from '@angular/forms';\nimport { environment } from 'src/environments/environment';\nimport { Output, EventEmitter } from '@angular/core';\nimport { Store } from '@ngrx/store';\nimport * as loginActions from '../../store/action'\n\n@Component({\n  selector: 'app-add-product',\n  templateUrl: './add-product.component.html',\n  styleUrls: ['./add-product.component.scss']\n})\nexport class AddProductComponent implements OnInit {\n  @Output() newItemEvent = new EventEmitter<any>();\n  @Input() mode\n  constructor(\n    public stateService: StateService,\n    private httpService: HttpService,\n    private store: Store<any>\n  ) {}\n\n  addProductForm = new FormGroup({\n    heading: new FormControl(),\n    description: new FormControl(),\n    imageUrl: new FormControl(),\n    id: new FormControl()\n  });\n\n  ngOnInit(): void {\n    console.log(this.mode);\n    \n  }\n  addProduct(){\n    this.httpService.postSecured(environment.addProducts,this.addProductForm.value).subscribe(data =>{\n      console.log(data);\n      // this.stateService.addProductFormView = false;\n      this.store.dispatch(new loginActions.HideAddProductAction());\n      this.newItemEvent.emit(data);\n    })\n  }\n\n  Cancel(){\n    // this.stateService.addProductFormView = false;\n    this.store.dispatch(new loginActions.HideAddProductAction());\n  }\n  \n}\n",
+            "sourceCode": "import { Component, OnInit, Input } from '@angular/core';\r\nimport { StateService } from 'src/app/services/state.service';\r\nimport { HttpService } from 'src/app/services/http.service';\r\nimport { FormGroup, FormControl } from '@angular/forms';\r\nimport { environment } from 'src/environments/environment';\r\nimport { Output, EventEmitter } from '@angular/core';\r\nimport { Store } from '@ngrx/store';\r\nimport * as loginActions from '../../store/action'\r\n\r\n@Component({\r\n  selector: 'app-add-product',\r\n  templateUrl: './add-product.component.html',\r\n  styleUrls: ['./add-product.component.scss']\r\n})\r\nexport class AddProductComponent implements OnInit {\r\n  @Output() newItemEvent = new EventEmitter<any>();\r\n  @Input() mode\r\n  constructor(\r\n    public stateService: StateService,\r\n    private httpService: HttpService,\r\n    private store: Store<any>\r\n  ) {}\r\n\r\n  addProductForm = new FormGroup({\r\n    heading: new FormControl(),\r\n    description: new FormControl(),\r\n    imageUrl: new FormControl(),\r\n    id: new FormControl()\r\n  });\r\n\r\n  ngOnInit(): void {\r\n    console.log(this.mode);\r\n    \r\n  }\r\n  addProduct(){\r\n    this.httpService.postSecured(environment.addProducts,this.addProductForm.value).subscribe(data =>{\r\n      console.log(data);\r\n      // this.stateService.addProductFormView = false;\r\n      this.store.dispatch(new loginActions.HideAddProductAction());\r\n      this.newItemEvent.emit(data);\r\n    })\r\n  }\r\n\r\n  Cancel(){\r\n    // this.stateService.addProductFormView = false;\r\n    this.store.dispatch(new loginActions.HideAddProductAction());\r\n  }\r\n  \r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import \"../../../theme/variable.scss\";\r\n\r\n.add-product-wrapper {\r\n  position: fixed;\r\n  z-index: 2;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100vw;\r\n  height: 100vh;\r\n  background-color: var(--bg-shadow);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n\r\n  .add-product-body{\r\n    width: 30%;\r\n    // height: 400px;\r\n    background-color: var(--white);\r\n    border-radius: 15px;\r\n    padding: 2em;\r\n    .heading{\r\n      h3{\r\n        color: var(--text-color);\r\n      }\r\n    }\r\n\r\n    .input-wrapper {\r\n      display: flex;\r\n      flex-direction: column;\r\n      margin: 2em 0;\r\n      label{\r\n        color: var(--text-color);\r\n      }\r\n      input { \r\n        margin-top: 1em;\r\n        border: none;\r\n        outline: none;\r\n        border-bottom: 1px solid;\r\n        font-size: 1.2rem;\r\n      }\r\n    }\r\n    .btn-wrapper{\r\n      display: flex;\r\n      width: 100%;\r\n      justify-content: space-between;\r\n    }\r\n  }\r\n}\r\n",
+                    "data": "\r\n.add-product-wrapper {\r\n  position: fixed;\r\n  z-index: 2;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100vw;\r\n  height: 100vh;\r\n  background-color: var(--bg-shadow);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n\r\n  .add-product-body{\r\n    width: 30%;\r\n    // height: 400px;\r\n    background-color: var(--white);\r\n    border-radius: 15px;\r\n    padding: 2em;\r\n    .heading{\r\n      h3{\r\n        color: var(--text-color);\r\n      }\r\n    }\r\n\r\n    .input-wrapper {\r\n      display: flex;\r\n      flex-direction: column;\r\n      margin: 2em 0;\r\n      label{\r\n        color: var(--text-color);\r\n      }\r\n      input { \r\n        margin-top: 1em;\r\n        border: none;\r\n        outline: none;\r\n        border-bottom: 1px solid;\r\n        font-size: 1.2rem;\r\n      }\r\n    }\r\n    .btn-wrapper{\r\n      display: flex;\r\n      width: 100%;\r\n      justify-content: space-between;\r\n    }\r\n  }\r\n}\r\n",
                     "styleUrl": "./add-product.component.scss"
                 }
             ],
@@ -706,11 +706,11 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"add-product-wrapper\">\n\n    <div class=\"add-product-body\">\n        <div class=\"heading\">\n            <h3>\n                Add Product\n            </h3>\n        </div>\n        <form [formGroup]=\"addProductForm\">\n\n            <div class=\"input-wrapper\">\n                <label for=\"username\">id</label>\n                <input type=\"text\" placeholder=\"Enter unique id\" formControlName=\"id\">\n            </div>\n\n        <div class=\"input-wrapper\">\n            <label for=\"heading\">heading</label>\n            <input type=\"text\" placeholder=\"Enter Heading\" formControlName=\"heading\">\n        </div>\n        <div class=\"input-wrapper\">\n            <label for=\"description\">description</label>\n            <input type=\"text\" placeholder=\"Enter description\" formControlName=\"description\">\n        </div>\n        <div class=\"input-wrapper\">\n            <label for=\"imageUrl\">imageUrl</label>\n            <input type=\"text\" placeholder=\"Enter imageUrl\" formControlName=\"imageUrl\">\n        </div>\n\n    </form>\n\n        <div class=\"btn-wrapper\">\n            <custom-button title = \"Add Product\" (click)= \"addProduct()\"></custom-button>\n            <custom-button title = \"Cancel\" (click)= \"Cancel()\"></custom-button>\n        </div>\n    </div>\n\n\n</div>\n"
+            "templateData": "<div class=\"add-product-wrapper\">\r\n\r\n    <div class=\"add-product-body\">\r\n        <div class=\"heading\">\r\n            <h3>\r\n                Add Product\r\n            </h3>\r\n        </div>\r\n        <form [formGroup]=\"addProductForm\">\r\n\r\n            <div class=\"input-wrapper\">\r\n                <label for=\"username\">id</label>\r\n                <input type=\"text\" placeholder=\"Enter unique id\" formControlName=\"id\">\r\n            </div>\r\n\r\n        <div class=\"input-wrapper\">\r\n            <label for=\"heading\">heading</label>\r\n            <input type=\"text\" placeholder=\"Enter Heading\" formControlName=\"heading\">\r\n        </div>\r\n        <div class=\"input-wrapper\">\r\n            <label for=\"description\">description</label>\r\n            <input type=\"text\" placeholder=\"Enter description\" formControlName=\"description\">\r\n        </div>\r\n        <div class=\"input-wrapper\">\r\n            <label for=\"imageUrl\">imageUrl</label>\r\n            <input type=\"text\" placeholder=\"Enter imageUrl\" formControlName=\"imageUrl\">\r\n        </div>\r\n\r\n    </form>\r\n\r\n        <div class=\"btn-wrapper\">\r\n            <custom-button title = \"Add Product\" (click)= \"addProduct()\"></custom-button>\r\n            <custom-button title = \"Cancel\" (click)= \"Cancel()\"></custom-button>\r\n        </div>\r\n    </div>\r\n\r\n\r\n</div>\r\n"
         },
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-5a9a12aa259da242273aabb8430570a9",
+            "id": "component-AppComponent-19219488c222efbb4022a8cb851ea58f",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -804,7 +804,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 50,
+                    "line": 51,
                     "jsdoctags": [
                         {
                             "name": "newItem",
@@ -826,7 +826,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 56,
+                    "line": 58,
                     "jsdoctags": [
                         {
                             "name": "id",
@@ -848,7 +848,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 47,
+                    "line": 48,
                     "jsdoctags": [
                         {
                             "name": "id",
@@ -865,7 +865,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 40
+                    "line": 39
                 },
                 {
                     "name": "ngOnInit",
@@ -881,11 +881,11 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component,OnInit } from '@angular/core';\nimport { environment } from 'src/environments/environment';\nimport { HttpService } from './services/http.service';\nimport { StateService } from './services/state.service';\nimport { CustomElement } from './lit-elements/cutom-button-elements';\nimport { Store } from '@ngrx/store';\nimport * as loginActions from './store/action'\nconsole.assert(CustomElement !== undefined);\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent implements OnInit  {\n  title = 'test-assignment';\n  id:number\n  products: any;\n  public loggedInFormView: boolean;\n  public addProductFormView: boolean;\n  public editProductFormView: boolean;\n  constructor(\n    private httpService: HttpService,\n    public stateService: StateService,\n    private store: Store<any>\n  ) {\n    this.getProducts();\n  }\n\n  ngOnInit(): void {\n    this.store.subscribe((state) => {\n      console.log(state, 'app');\n      this.loggedInFormView = state.loginView.loggedInFormView;\n      this.addProductFormView = state.loginView.addProductFormView;\n      this.editProductFormView = state.loginView.editProductFormView;\n    })\n    // console.log(this.loggedInFormView$);\n\n  }\n\n  getProducts() {\n    this.httpService.getSecured(environment.getProducts).subscribe((data) => {\n      this.products = data;\n      console.log(this.products);\n    });\n  }\n\n  getId(id) {\n    console.log(id);\n  }\n  addItem(newItem: string) {\n    this.httpService.getSecured(environment.getProducts).subscribe((data) => {\n      this.products = data;\n      console.log(this.products);\n    });\n  }\n  editItem(id){\n    this.id=id\n    console.log(id);\n\n  }\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { environment } from 'src/environments/environment';\r\nimport { HttpService } from './services/http.service';\r\nimport { StateService } from './services/state.service';\r\nimport { CustomElement } from './lit-elements/cutom-button-elements';\r\nimport { Store } from '@ngrx/store';\r\nimport * as loginActions from './store/action';\r\nconsole.assert(CustomElement !== undefined);\r\n@Component({\r\n\tselector: 'app-root',\r\n\ttemplateUrl: './app.component.html',\r\n\tstyleUrls: ['./app.component.scss'],\r\n})\r\nexport class AppComponent implements OnInit {\r\n\ttitle = 'test-assignment';\r\n\tid: number;\r\n\tproducts: any;\r\n\tpublic loggedInFormView: boolean;\r\n\tpublic addProductFormView: boolean;\r\n\tpublic editProductFormView: boolean;\r\n\tconstructor(\r\n\t\tprivate httpService: HttpService,\r\n\t\tpublic stateService: StateService,\r\n\t\tprivate store: Store<any>\r\n\t) {\r\n\t\tthis.getProducts();\r\n\t}\r\n\r\n\tngOnInit(): void {\r\n\t\tthis.store.subscribe((state) => {\r\n\t\t\tconsole.log(state, 'app');\r\n\t\t\tthis.loggedInFormView = state.loginView.loggedInFormView;\r\n\t\t\tthis.addProductFormView = state.loginView.addProductFormView;\r\n\t\t\tthis.editProductFormView = state.loginView.editProductFormView;\r\n\t\t});\r\n\t\t// console.log(this.loggedInFormView$);\r\n\t}\r\n\r\n\tgetProducts() {\r\n\t\tthis.httpService\r\n\t\t\t.getSecured(environment.getProducts)\r\n\t\t\t.subscribe((data) => {\r\n\t\t\t\tthis.products = data;\r\n\t\t\t\tconsole.log(this.products);\r\n\t\t\t});\r\n\t}\r\n\r\n\tgetId(id) {\r\n\t\tconsole.log(id);\r\n\t}\r\n\taddItem(newItem: string) {\r\n\t\t// this.httpService.getSecured(environment.getProducts).subscribe((data) => {\r\n\t\t//   this.products = data;\r\n\t\t//   console.log(this.products);\r\n\t\t// });\r\n\t\tthis.getProducts();\r\n\t}\r\n\teditItem(id) {\r\n\t\tthis.id = id;\r\n\t\tconsole.log(id);\r\n\t}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import '../theme/variable.scss';\r\n\r\nmain{\r\n    width: 100%;\r\n    min-height: 100vh;\r\n    background-color: var(--primary-bg);\r\n    display: flex;\r\n    justify-content: center;\r\n    padding-top: 2rem;\r\n    margin-top: 50px;\r\n    .container{\r\n        display: grid;\r\n        width: 80%;\r\n        grid-template-columns: repeat(auto-fit,minmax(250px,300px));\r\n        grid-auto-rows: auto;\r\n        grid-gap: 30px;\r\n        justify-content: center;\r\n    }\r\n\r\n}",
+                    "data": "\r\nmain{\r\n    width: 100%;\r\n    min-height: 100vh;\r\n    background-color: var(--primary-bg);\r\n    display: flex;\r\n    justify-content: center;\r\n    padding-top: 2rem;\r\n    margin-top: 50px;\r\n    .container{\r\n        display: grid;\r\n        width: 80%;\r\n        grid-template-columns: repeat(auto-fit,minmax(250px,300px));\r\n        grid-auto-rows: auto;\r\n        grid-gap: 30px;\r\n        justify-content: center;\r\n    }\r\n\r\n}",
                     "styleUrl": "./app.component.scss"
                 }
             ],
@@ -935,11 +935,11 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<app-header></app-header>\n<app-login *ngIf=\"loggedInFormView\"></app-login>\n<app-add-product (newItemEvent)=\"addItem($event)\" *ngIf=\"addProductFormView\"></app-add-product>\n<app-edit-products id={{id}} (newItemEvent)=\"addItem($event)\" *ngIf=\"editProductFormView\"></app-edit-products>\n<main>\n  <div class=\"container\">\n    <ng-container *ngFor=\"let item of products\">\n      <app-card\n      [product]=\"item\"\n        (newItemEvent)=\"addItem($event)\"\n        (newItemIdEvent)=\"editItem($event)\"\n      >\n      </app-card>\n    </ng-container>\n  </div>\n</main>\n\n"
+            "templateData": "<app-header></app-header>\r\n<app-login *ngIf=\"loggedInFormView\"></app-login>\r\n<app-add-product (newItemEvent)=\"addItem($event)\" *ngIf=\"addProductFormView\"></app-add-product>\r\n<app-edit-products id={{id}} (newItemEvent)=\"addItem($event)\" *ngIf=\"editProductFormView\"></app-edit-products>\r\n<main>\r\n  <div class=\"container\">\r\n    <ng-container *ngFor=\"let item of products\">\r\n      <app-card\r\n      [product]=\"item\"\r\n        (newItemEvent)=\"addItem($event)\"\r\n        (newItemIdEvent)=\"editItem($event)\"\r\n      >\r\n      </app-card>\r\n    </ng-container>\r\n  </div>\r\n</main>\r\n\r\n"
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-64ad17e364f0d098f4b598c57249e5bb",
+            "id": "component-ButtonComponent-c694923ddbb8f45e47610f8647af9fc5",
             "file": "src/app/common-components/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -978,11 +978,11 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, Input } from '@angular/core';\n\n@Component({\n  selector: 'app-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss']\n})\nexport class ButtonComponent implements OnInit {\n  @Input() title;\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "sourceCode": "import { Component, OnInit, Input } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-button',\r\n  templateUrl: './button.component.html',\r\n  styleUrls: ['./button.component.scss']\r\n})\r\nexport class ButtonComponent implements OnInit {\r\n  @Input() title;\r\n  constructor() { }\r\n\r\n  ngOnInit(): void {\r\n  }\r\n\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import '../../../theme/variable.scss';\r\n    .login-btn{\r\n        background-color: var(--primary-color);\r\n        padding: 0.5em 2em;\r\n        font-size: 1rem;\r\n        border: none;\r\n        border-radius: 5px;\r\n        box-shadow: 2px 2px 3px #0000001f;\r\n        color: var(--white);\r\n        // margin: 0.5rem 1rem;\r\n        outline: none;\r\n        cursor: pointer;\r\n    }",
+                    "data": "\r\n    .login-btn{\r\n        background-color: var(--primary-color);\r\n        padding: 0.5em 2em;\r\n        font-size: 1rem;\r\n        border: none;\r\n        border-radius: 5px;\r\n        box-shadow: 2px 2px 3px #0000001f;\r\n        color: var(--white);\r\n        // margin: 0.5rem 1rem;\r\n        outline: none;\r\n        cursor: pointer;\r\n    }",
                     "styleUrl": "./button.component.scss"
                 }
             ],
@@ -996,11 +996,11 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<button class=\"login-btn\" >\n    {{title}}\n</button>\n"
+            "templateData": "<button class=\"login-btn\" >\r\n    {{title}}\r\n</button>\r\n"
         },
         {
             "name": "CardComponent",
-            "id": "component-CardComponent-8ba35288b650bf7b1b00eb8520063b92",
+            "id": "component-CardComponent-4fd357e0e993358c17d7882702fb8edf",
             "file": "src/app/components/card/card.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1107,11 +1107,11 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';\nimport { StateService } from 'src/app/services/state.service';\nimport { HttpService } from 'src/app/services/http.service';\nimport { environment } from 'src/environments/environment';\nimport { CustomElement } from '../../lit-elements/cutom-button-elements';\nimport { Store } from '@ngrx/store';\nimport * as loginActions from '../../store/action'\n\nconsole.assert(CustomElement !== undefined);\n@Component({\n  selector: 'app-card',\n  templateUrl: './card.component.html',\n  styleUrls: ['./card.component.scss']\n})\nexport class CardComponent implements OnInit {\n  @Output() newItemEvent = new EventEmitter<any>();\n  @Output() newItemIdEvent = new EventEmitter<any>();\n  @Input() product;\n\n  constructor(public stateService: StateService,private httpService:HttpService,private store: Store<any>) {\n    \n    JSON.stringify\n   }\n\n  ngOnInit(): void {\n    // console.log(\"products\",this.product);\n    \n  }\n  deleteProduct(id){\n    this.httpService.deleteSecured(environment.deleteProducts.replace('{id}',id)).subscribe(data =>{\n      console.log(data);\n      this.newItemEvent.emit(data);\n    })\n  }\n  edit(id){\n    // this.stateService.editProductFormView = true;\n    this.store.dispatch(new loginActions.ShowEditProductAction());\n    this.newItemIdEvent.emit(id);\n  }\n  \n  \n\n}\n",
+            "sourceCode": "import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';\r\nimport { StateService } from 'src/app/services/state.service';\r\nimport { HttpService } from 'src/app/services/http.service';\r\nimport { environment } from 'src/environments/environment';\r\nimport { CustomElement } from '../../lit-elements/cutom-button-elements';\r\nimport { Store } from '@ngrx/store';\r\nimport * as loginActions from '../../store/action'\r\n\r\nconsole.assert(CustomElement !== undefined);\r\n@Component({\r\n  selector: 'app-card',\r\n  templateUrl: './card.component.html',\r\n  styleUrls: ['./card.component.scss']\r\n})\r\nexport class CardComponent implements OnInit {\r\n  @Output() newItemEvent = new EventEmitter<any>();\r\n  @Output() newItemIdEvent = new EventEmitter<any>();\r\n  @Input() product;\r\n\r\n  constructor(public stateService: StateService,private httpService:HttpService,private store: Store<any>) {\r\n    \r\n    JSON.stringify\r\n   }\r\n\r\n  ngOnInit(): void {\r\n    // console.log(\"products\",this.product);\r\n    \r\n  }\r\n  deleteProduct(id){\r\n    this.httpService.deleteSecured(environment.deleteProducts.replace('{id}',id)).subscribe(data =>{\r\n      console.log(data);\r\n      this.newItemEvent.emit(data);\r\n    })\r\n  }\r\n  edit(id){\r\n    // this.stateService.editProductFormView = true;\r\n    this.store.dispatch(new loginActions.ShowEditProductAction());\r\n    this.newItemIdEvent.emit(id);\r\n  }\r\n  \r\n  \r\n\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import \"../../../theme/variable.scss\";\r\n\r\n.card {\r\n  width: 100%;\r\n  background-color: var(--white);\r\n  border-radius: 15px;\r\n  \r\n  img {\r\n    width: 100%;\r\n    height: 200px;\r\n    object-fit: cover;\r\n    border-radius: 15px 15px 0 0;\r\n  }\r\n\r\n  .info{\r\n    padding: 1em 1.5em 2em; \r\n    color: var(--text-color);\r\n    p{\r\n      margin-top: 1em;\r\n    }\r\n  }\r\n  .btn-wrapper{\r\n    display: flex;\r\n    width: 100%;\r\n    justify-content: space-around;\r\n    padding: 0 0 2rem;\r\n\r\n  }\r\n}\r\n",
+                    "data": "\r\n.card {\r\n  width: 100%;\r\n  background-color: var(--white);\r\n  border-radius: 15px;\r\n  \r\n  img {\r\n    width: 100%;\r\n    height: 200px;\r\n    object-fit: cover;\r\n    border-radius: 15px 15px 0 0;\r\n  }\r\n\r\n  .info{\r\n    padding: 1em 1.5em 2em; \r\n    color: var(--text-color);\r\n    p{\r\n      margin-top: 1em;\r\n    }\r\n  }\r\n  .btn-wrapper{\r\n    display: flex;\r\n    width: 100%;\r\n    justify-content: space-around;\r\n    padding: 0 0 2rem;\r\n\r\n  }\r\n}\r\n",
                     "styleUrl": "./card.component.scss"
                 }
             ],
@@ -1161,11 +1161,11 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"card\">\n  <img src=\"{{ product.imageUrl }}\" alt=\"card image\" />\n  <div class=\"info\">\n    <h3>{{ product.heading }}</h3>\n    <p>\n      {{ product.description }}\n    </p>\n  </div>\n  <div class=\"btn-wrapper\" *ngIf=\"this.stateService.user\">\n    <custom-button  title=\"Edit\" (click)=\"edit(product.id)\"></custom-button >\n    <custom-button  title=\"Delete\" (click)=\"deleteProduct(product.id)\"></custom-button>\n  </div>\n</div>\n"
+            "templateData": "<div class=\"card\">\r\n  <img src=\"{{ product.imageUrl }}\" alt=\"card image\" />\r\n  <div class=\"info\">\r\n    <h3>{{ product.heading }}</h3>\r\n    <p>\r\n      {{ product.description }}\r\n    </p>\r\n  </div>\r\n  <div class=\"btn-wrapper\" *ngIf=\"this.stateService.user\">\r\n    <custom-button  title=\"Edit\" (click)=\"edit(product.id)\"></custom-button >\r\n    <custom-button  title=\"Delete\" (click)=\"deleteProduct(product.id)\"></custom-button>\r\n  </div>\r\n</div>\r\n"
         },
         {
             "name": "EditProductsComponent",
-            "id": "component-EditProductsComponent-997fa475b135c8d03dee209ad01734f6",
+            "id": "component-EditProductsComponent-e557cd6b630491ce11e1dc03bd8f9e51",
             "file": "src/app/components/edit-products/edit-products.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1198,7 +1198,7 @@
             "propertiesClass": [
                 {
                     "name": "editProductForm",
-                    "defaultValue": "new FormGroup({\n\t\theading: new FormControl(),\n\t\tdescription: new FormControl(),\n\t\timageUrl: new FormControl(),\n\t\tid: new FormControl(),\n\t})",
+                    "defaultValue": "new FormGroup({\r\n\t\theading: new FormControl(),\r\n\t\tdescription: new FormControl(),\r\n\t\timageUrl: new FormControl(),\r\n\t\tid: new FormControl(),\r\n\t})",
                     "type": "",
                     "optional": false,
                     "description": "",
@@ -1268,11 +1268,11 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, Input } from '@angular/core';\nimport { StateService } from 'src/app/services/state.service';\nimport { HttpService } from 'src/app/services/http.service';\nimport { FormGroup, FormControl } from '@angular/forms';\nimport { environment } from 'src/environments/environment';\nimport { Output, EventEmitter } from '@angular/core';\nimport { CustomElement } from '../../lit-elements/cutom-button-elements';\nimport { Store } from '@ngrx/store';\nimport * as loginActions from '../../store/action'\n\nconsole.assert(CustomElement !== undefined);\n@Component({\n\tselector: 'app-edit-products',\n\ttemplateUrl: './edit-products.component.html',\n\tstyleUrls: ['./edit-products.component.scss'],\n})\nexport class EditProductsComponent implements OnInit {\n\t@Output() newItemEvent = new EventEmitter<any>();\n\t@Input() id;\n\tconstructor(\n\t\tpublic stateService: StateService,\n\t\tprivate httpService: HttpService,\n\t\tprivate store: Store<any>\n\t) {}\n\n\teditProductForm = new FormGroup({\n\t\theading: new FormControl(),\n\t\tdescription: new FormControl(),\n\t\timageUrl: new FormControl(),\n\t\tid: new FormControl(),\n\t});\n\tngOnInit(): void {\n\t\tconsole.log(this.id);\n\n\t\tthis.getProductById(this.id);\n\t}\n\tgetProductById(id) {\n\t\tthis.httpService\n\t\t\t.getSecured(environment.getProductsById.replace('{id}', id))\n\t\t\t.subscribe((data) => {\n\t\t\t\tconsole.log(data);\n\t\t\t\tthis.editProductForm.patchValue(data);\n\t\t\t\t// this.stateService.addProductFormView = false;\n\t\t\t\t// this.newItemEvent.emit(data);\n\t\t\t});\n\t}\n\teditProduct() {\n\t\tthis.httpService\n\t\t\t.patchSecured(\n\t\t\t\tenvironment.editProductsBy.replace('{id}', this.id),\n\t\t\t\tthis.editProductForm.value\n\t\t\t)\n\t\t\t.subscribe((data) => {\n\t\t\t\tconsole.log(data);\n\t\t\t\t// this.stateService.editProductFormView = false;\n\t\t\t\tthis.store.dispatch(new loginActions.HideEditProductAction());\n\t\t\t\tthis.newItemEvent.emit(data);\n\t\t\t});\n\t}\n\n\tCancel() {\n\t\tthis.store.dispatch(new loginActions.HideEditProductAction());\n\t\t// this.stateService.editProductFormView = false;\n\t}\n}\n",
+            "sourceCode": "import { Component, OnInit, Input } from '@angular/core';\r\nimport { StateService } from 'src/app/services/state.service';\r\nimport { HttpService } from 'src/app/services/http.service';\r\nimport { FormGroup, FormControl } from '@angular/forms';\r\nimport { environment } from 'src/environments/environment';\r\nimport { Output, EventEmitter } from '@angular/core';\r\nimport { CustomElement } from '../../lit-elements/cutom-button-elements';\r\nimport { Store } from '@ngrx/store';\r\nimport * as loginActions from '../../store/action'\r\n\r\nconsole.assert(CustomElement !== undefined);\r\n@Component({\r\n\tselector: 'app-edit-products',\r\n\ttemplateUrl: './edit-products.component.html',\r\n\tstyleUrls: ['./edit-products.component.scss'],\r\n})\r\nexport class EditProductsComponent implements OnInit {\r\n\t@Output() newItemEvent = new EventEmitter<any>();\r\n\t@Input() id;\r\n\tconstructor(\r\n\t\tpublic stateService: StateService,\r\n\t\tprivate httpService: HttpService,\r\n\t\tprivate store: Store<any>\r\n\t) {}\r\n\r\n\teditProductForm = new FormGroup({\r\n\t\theading: new FormControl(),\r\n\t\tdescription: new FormControl(),\r\n\t\timageUrl: new FormControl(),\r\n\t\tid: new FormControl(),\r\n\t});\r\n\tngOnInit(): void {\r\n\t\tconsole.log(this.id);\r\n\r\n\t\tthis.getProductById(this.id);\r\n\t}\r\n\tgetProductById(id) {\r\n\t\tthis.httpService\r\n\t\t\t.getSecured(environment.getProductsById.replace('{id}', id))\r\n\t\t\t.subscribe((data) => {\r\n\t\t\t\tconsole.log(data);\r\n\t\t\t\tthis.editProductForm.patchValue(data);\r\n\t\t\t\t// this.stateService.addProductFormView = false;\r\n\t\t\t\t// this.newItemEvent.emit(data);\r\n\t\t\t});\r\n\t}\r\n\teditProduct() {\r\n\t\tthis.httpService\r\n\t\t\t.patchSecured(\r\n\t\t\t\tenvironment.editProductsBy.replace('{id}', this.id),\r\n\t\t\t\tthis.editProductForm.value\r\n\t\t\t)\r\n\t\t\t.subscribe((data) => {\r\n\t\t\t\tconsole.log(data);\r\n\t\t\t\t// this.stateService.editProductFormView = false;\r\n\t\t\t\tthis.store.dispatch(new loginActions.HideEditProductAction());\r\n\t\t\t\tthis.newItemEvent.emit(data);\r\n\t\t\t});\r\n\t}\r\n\r\n\tCancel() {\r\n\t\tthis.store.dispatch(new loginActions.HideEditProductAction());\r\n\t\t// this.stateService.editProductFormView = false;\r\n\t}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import \"../../../theme/variable.scss\";\r\n\r\n.edit-product-wrapper {\r\n  position: fixed;\r\n  z-index: 2;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100vw;\r\n  height: 100vh;\r\n  background-color: var(--bg-shadow);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  color: var(--text-color);\r\n  .edit-product-body{\r\n    width: 30%;\r\n    // height: 400px;\r\n    background-color: var(--white);\r\n    border-radius: 15px;\r\n    padding: 2em;\r\n\r\n    .input-wrapper {\r\n      display: flex;\r\n      flex-direction: column;\r\n      margin: 2em 0;\r\n      input { \r\n        margin-top: 1em;\r\n        border: none;\r\n        outline: none;\r\n        border-bottom: 1px solid;\r\n        font-size: 1.2rem;\r\n      }\r\n    }\r\n    .btn-wrapper{\r\n      display: flex;\r\n      width: 100%;\r\n      justify-content: space-between;\r\n    }\r\n  }\r\n}\r\n",
+                    "data": "\r\n.edit-product-wrapper {\r\n  position: fixed;\r\n  z-index: 2;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100vw;\r\n  height: 100vh;\r\n  background-color: var(--bg-shadow);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  color: var(--text-color);\r\n  .edit-product-body{\r\n    width: 30%;\r\n    // height: 400px;\r\n    background-color: var(--white);\r\n    border-radius: 15px;\r\n    padding: 2em;\r\n\r\n    .input-wrapper {\r\n      display: flex;\r\n      flex-direction: column;\r\n      margin: 2em 0;\r\n      input { \r\n        margin-top: 1em;\r\n        border: none;\r\n        outline: none;\r\n        border-bottom: 1px solid;\r\n        font-size: 1.2rem;\r\n      }\r\n    }\r\n    .btn-wrapper{\r\n      display: flex;\r\n      width: 100%;\r\n      justify-content: space-between;\r\n    }\r\n  }\r\n}\r\n",
                     "styleUrl": "./edit-products.component.scss"
                 }
             ],
@@ -1322,11 +1322,11 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"edit-product-wrapper\">\n\n    <div class=\"edit-product-body\">\n        <div class=\"heading\">\n            <h3>\n                Edit Product\n            </h3>\n        </div>\n        <form [formGroup]=\"editProductForm\">\n\n            <div class=\"input-wrapper\">\n                <label for=\"username\">id</label>\n                <input type=\"text\" placeholder=\"Enter unique id\" formControlName=\"id\">\n            </div>\n\n        <div class=\"input-wrapper\">\n            <label for=\"heading\">heading</label>\n            <input type=\"text\" placeholder=\"Enter Heading\" formControlName=\"heading\">\n        </div>\n        <div class=\"input-wrapper\">\n            <label for=\"description\">description</label>\n            <input type=\"text\" placeholder=\"Enter description\" formControlName=\"description\">\n        </div>\n        <div class=\"input-wrapper\">\n            <label for=\"imageUrl\">imageUrl</label>\n            <input type=\"text\" placeholder=\"Enter imageUrl\" formControlName=\"imageUrl\">\n        </div>\n\n    </form>\n\n        <div class=\"btn-wrapper\">\n            <custom-button  title = \"Edit Product\" (click)= \"editProduct()\"></custom-button >\n            <custom-button  title = \"Cancel\" (click)= \"Cancel()\"></custom-button>\n        </div>\n    </div>\n\n\n</div>\n"
+            "templateData": "<div class=\"edit-product-wrapper\">\r\n\r\n    <div class=\"edit-product-body\">\r\n        <div class=\"heading\">\r\n            <h3>\r\n                Edit Product\r\n            </h3>\r\n        </div>\r\n        <form [formGroup]=\"editProductForm\">\r\n\r\n            <div class=\"input-wrapper\">\r\n                <label for=\"username\">id</label>\r\n                <input type=\"text\" placeholder=\"Enter unique id\" formControlName=\"id\">\r\n            </div>\r\n\r\n        <div class=\"input-wrapper\">\r\n            <label for=\"heading\">heading</label>\r\n            <input type=\"text\" placeholder=\"Enter Heading\" formControlName=\"heading\">\r\n        </div>\r\n        <div class=\"input-wrapper\">\r\n            <label for=\"description\">description</label>\r\n            <input type=\"text\" placeholder=\"Enter description\" formControlName=\"description\">\r\n        </div>\r\n        <div class=\"input-wrapper\">\r\n            <label for=\"imageUrl\">imageUrl</label>\r\n            <input type=\"text\" placeholder=\"Enter imageUrl\" formControlName=\"imageUrl\">\r\n        </div>\r\n\r\n    </form>\r\n\r\n        <div class=\"btn-wrapper\">\r\n            <custom-button  title = \"Edit Product\" (click)= \"editProduct()\"></custom-button >\r\n            <custom-button  title = \"Cancel\" (click)= \"Cancel()\"></custom-button>\r\n        </div>\r\n    </div>\r\n\r\n\r\n</div>\r\n"
         },
         {
             "name": "HeaderComponent",
-            "id": "component-HeaderComponent-bd901ece1cf949c2ed68b151a5186328",
+            "id": "component-HeaderComponent-978a4d04113b58e472bc4131e49e4df0",
             "file": "src/app/components/header/header.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1405,11 +1405,11 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { StateService } from 'src/app/services/state.service';\nimport { Store } from '@ngrx/store';\nimport { CustomElement } from '../../lit-elements/cutom-button-elements';\nimport { Observable } from 'rxjs';\nimport * as loginActions from '../../store/action'\nconsole.assert(CustomElement !== undefined);\n@Component({\n  selector: 'app-header',\n  templateUrl: './header.component.html',\n  styleUrls: ['./header.component.scss'],\n})\nexport class HeaderComponent implements OnInit {\n  public loggedInFormView: boolean\n  constructor(public stateService: StateService,private store: Store<any>) {\n    // this.loggedInFormView$ = store.select('loginView');\n  }\n\n  ngOnInit(): void {\n    this.store.subscribe((state) => {\n      console.log(state, 'header');\n    })\n    // console.log(this.loggedInFormView$);\n\n    //toggle\n  let checkbox = document.querySelector('input[name=theme]');\n\n  checkbox.addEventListener('change', function() {\n      if(this.checked) {\n          trans()\n          document.documentElement.setAttribute('data-theme', 'dark')\n      } else {\n          trans()\n          document.documentElement.setAttribute('data-theme', 'light')\n      }\n  })\n\n  let trans = () => {\n      document.documentElement.classList.add('transition');\n      window.setTimeout(() => {\n          document.documentElement.classList.remove('transition')\n      }, 1000)\n  }\n\n  }\n  openLoginFrom() {\n    // this.stateService.loggedInFormView = true;\n    this.store.dispatch(new loginActions.ShowLoginAction());\n  }\n  logout() {\n    // this.stateService.isLoggedIn = false;\n    this.store.dispatch(new loginActions.HideLoginAction());\n\n    console.log('login', this.stateService.isLoggedIn);\n\n    sessionStorage.clear();\n  }\n  addProduct(){\n    // this.stateService.addProductFormView = true;\n    this.store.dispatch(new loginActions.ShowAddProductAction());\n  }\n\n\n  \n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { StateService } from 'src/app/services/state.service';\r\nimport { Store } from '@ngrx/store';\r\nimport { CustomElement } from '../../lit-elements/cutom-button-elements';\r\nimport { Observable } from 'rxjs';\r\nimport * as loginActions from '../../store/action'\r\nconsole.assert(CustomElement !== undefined);\r\n@Component({\r\n  selector: 'app-header',\r\n  templateUrl: './header.component.html',\r\n  styleUrls: ['./header.component.scss'],\r\n})\r\nexport class HeaderComponent implements OnInit {\r\n  public loggedInFormView: boolean\r\n  constructor(public stateService: StateService,private store: Store<any>) {\r\n    // this.loggedInFormView$ = store.select('loginView');\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    this.store.subscribe((state) => {\r\n      console.log(state, 'header');\r\n    })\r\n    // console.log(this.loggedInFormView$);\r\n\r\n    //toggle\r\n  let checkbox = document.querySelector('input[name=theme]');\r\n\r\n  checkbox.addEventListener('change', function() {\r\n      if(this.checked) {\r\n          trans()\r\n          document.documentElement.setAttribute('data-theme', 'dark')\r\n      } else {\r\n          trans()\r\n          document.documentElement.setAttribute('data-theme', 'light')\r\n      }\r\n  })\r\n\r\n  let trans = () => {\r\n      document.documentElement.classList.add('transition');\r\n      window.setTimeout(() => {\r\n          document.documentElement.classList.remove('transition')\r\n      }, 1000)\r\n  }\r\n\r\n  }\r\n  openLoginFrom() {\r\n    // this.stateService.loggedInFormView = true;\r\n    this.store.dispatch(new loginActions.ShowLoginAction());\r\n  }\r\n  logout() {\r\n    // this.stateService.isLoggedIn = false;\r\n    this.store.dispatch(new loginActions.HideLoginAction());\r\n\r\n    console.log('login', this.stateService.isLoggedIn);\r\n\r\n    sessionStorage.clear();\r\n  }\r\n  addProduct(){\r\n    // this.stateService.addProductFormView = true;\r\n    this.store.dispatch(new loginActions.ShowAddProductAction());\r\n  }\r\n\r\n\r\n  \r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import \"../../../theme/variable.scss\";\r\n\r\nheader {\r\n  width: 100%;\r\n  height: 50px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: flex-end;\r\n  position: fixed;\r\n  top: 0;\r\n  background-color: var(--white);\r\n  padding: 0 1rem;\r\n  .btn-wrapper {\r\n    margin: 0 0.5rem;\r\n  }\r\n\r\n  input[type=checkbox]{\r\n    height: 0;\r\n    width: 0;\r\n    visibility: hidden;\r\n  }\r\n  \r\n  label {\r\n    cursor: pointer;\r\n    text-indent: -9999px;\r\n    width: 52px;\r\n    height: 27px;\r\n    background: grey;\r\n    float: right;\r\n    border-radius: 100px;\r\n    position: relative;\r\n  }\r\n  \r\n  label:after {\r\n    content: '';\r\n    position: absolute;\r\n    top: 3px;\r\n    left: 3px;\r\n    width: 20px;\r\n    height: 20px;\r\n    background: #fff;\r\n    border-radius: 90px;\r\n    transition: 0.3s;\r\n  }\r\n  \r\n  input:checked + label {\r\n    background: var(--color-headings);\r\n  }\r\n  \r\n  input:checked + label:after {\r\n    left: calc(100% - 5px);\r\n    transform: translateX(-100%);\r\n  }\r\n  \r\n  label:active:after {\r\n    width: 45px;\r\n  }\r\n  \r\n  html.transition,\r\n  html.transition *,\r\n  html.transition *:before,\r\n  html.transition *:after {\r\n    transition: all 750ms !important;\r\n    transition-delay: 0 !important;\r\n  }\r\n}\r\n",
+                    "data": "\r\nheader {\r\n  width: 100%;\r\n  height: 50px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: flex-end;\r\n  position: fixed;\r\n  top: 0;\r\n  background-color: var(--white);\r\n  padding: 0 1rem;\r\n  .btn-wrapper {\r\n    margin: 0 0.5rem;\r\n  }\r\n\r\n  input[type=checkbox]{\r\n    height: 0;\r\n    width: 0;\r\n    visibility: hidden;\r\n  }\r\n  \r\n  label {\r\n    cursor: pointer;\r\n    text-indent: -9999px;\r\n    width: 52px;\r\n    height: 27px;\r\n    background: grey;\r\n    float: right;\r\n    border-radius: 100px;\r\n    position: relative;\r\n  }\r\n  \r\n  label:after {\r\n    content: '';\r\n    position: absolute;\r\n    top: 3px;\r\n    left: 3px;\r\n    width: 20px;\r\n    height: 20px;\r\n    background: #fff;\r\n    border-radius: 90px;\r\n    transition: 0.3s;\r\n  }\r\n  \r\n  input:checked + label {\r\n    background: var(--color-headings);\r\n  }\r\n  \r\n  input:checked + label:after {\r\n    left: calc(100% - 5px);\r\n    transform: translateX(-100%);\r\n  }\r\n  \r\n  label:active:after {\r\n    width: 45px;\r\n  }\r\n  \r\n  html.transition,\r\n  html.transition *,\r\n  html.transition *:before,\r\n  html.transition *:after {\r\n    transition: all 750ms !important;\r\n    transition-delay: 0 !important;\r\n  }\r\n}\r\n",
                     "styleUrl": "./header.component.scss"
                 }
             ],
@@ -1452,7 +1452,7 @@
         },
         {
             "name": "LoginComponent",
-            "id": "component-LoginComponent-baa5579108a609ae6196b1376d37baaa",
+            "id": "component-LoginComponent-696f0652ee9cf6eae88d5f1bfb872a79",
             "file": "src/app/components/login/login.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1473,7 +1473,7 @@
             "propertiesClass": [
                 {
                     "name": "loginform",
-                    "defaultValue": "new FormGroup({\n    email: new FormControl(),\n    password: new FormControl(),\n  })",
+                    "defaultValue": "new FormGroup({\r\n    email: new FormControl(),\r\n    password: new FormControl(),\r\n  })",
                     "type": "",
                     "optional": false,
                     "description": "",
@@ -1521,11 +1521,11 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { StateService } from 'src/app/services/state.service';\nimport { FormGroup, FormControl } from '@angular/forms';\nimport { HttpService } from 'src/app/services/http.service';\nimport { environment } from 'src/environments/environment';\nimport { Store } from '@ngrx/store';\nimport * as loginActions from '../../store/action'\n@Component({\n  selector: 'app-login',\n  templateUrl: './login.component.html',\n  styleUrls: ['./login.component.scss'],\n})\nexport class LoginComponent implements OnInit {\n  constructor(\n    public stateService: StateService,\n    private httpService: HttpService,\n    private store: Store<any>\n  ) {}\n\n  loginform = new FormGroup({\n    email: new FormControl(),\n    password: new FormControl(),\n  });\n\n  ngOnInit(): void {}\n  login() {\n    this.httpService.postLogin(environment.login,this.loginform.value).subscribe(data =>{\n      console.log(data);\n      sessionStorage.setItem('token',data.access_token);\n      this.store.dispatch(new loginActions.HideLoginAction());\n      // this.stateService.loggedInFormView = false;\n      this.stateService.isLoggedIn = true;\n      console.log(\"login\",this.stateService.isLoggedIn);\n      \n    } )\n\n  }\n\n  logout(){\n    // this.stateService.isLoggedIn = false;\n    console.log(\"login\",this.stateService.isLoggedIn);\n\n    \n  }\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { StateService } from 'src/app/services/state.service';\r\nimport { FormGroup, FormControl } from '@angular/forms';\r\nimport { HttpService } from 'src/app/services/http.service';\r\nimport { environment } from 'src/environments/environment';\r\nimport { Store } from '@ngrx/store';\r\nimport * as loginActions from '../../store/action'\r\n@Component({\r\n  selector: 'app-login',\r\n  templateUrl: './login.component.html',\r\n  styleUrls: ['./login.component.scss'],\r\n})\r\nexport class LoginComponent implements OnInit {\r\n  constructor(\r\n    public stateService: StateService,\r\n    private httpService: HttpService,\r\n    private store: Store<any>\r\n  ) {}\r\n\r\n  loginform = new FormGroup({\r\n    email: new FormControl(),\r\n    password: new FormControl(),\r\n  });\r\n\r\n  ngOnInit(): void {}\r\n  login() {\r\n    this.httpService.postLogin(environment.login,this.loginform.value).subscribe(data =>{\r\n      console.log(data);\r\n      sessionStorage.setItem('token',data.access_token);\r\n      this.store.dispatch(new loginActions.HideLoginAction());\r\n      // this.stateService.loggedInFormView = false;\r\n      this.stateService.isLoggedIn = true;\r\n      console.log(\"login\",this.stateService.isLoggedIn);\r\n      \r\n    } )\r\n\r\n  }\r\n\r\n  logout(){\r\n    // this.stateService.isLoggedIn = false;\r\n    console.log(\"login\",this.stateService.isLoggedIn);\r\n\r\n    \r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import \"../../../theme/variable.scss\";\r\n\r\n.login-wrapper {\r\n  position: fixed;\r\n  z-index: 2;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100vw;\r\n  height: 100vh;\r\n  background-color: var(--bg-shadow);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n\r\n  .login-body {\r\n    width: 30%;\r\n    // height: 400px;\r\n    background-color: var(--white);\r\n    border-radius: 15px;\r\n    padding: 2em;\r\n\r\n    .input-wrapper {\r\n      display: flex;\r\n      flex-direction: column;\r\n      margin: 2em 0;\r\n      input { \r\n        margin-top: 1em;\r\n        border: none;\r\n        outline: none;\r\n        border-bottom: 1px solid;\r\n        font-size: 1.2rem;\r\n      }\r\n    }\r\n    .btn-wrapper{\r\n\r\n    }\r\n  }\r\n}\r\n",
+                    "data": "\r\n.login-wrapper {\r\n  position: fixed;\r\n  z-index: 2;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100vw;\r\n  height: 100vh;\r\n  background-color: var(--bg-shadow);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n\r\n  .login-body {\r\n    width: 30%;\r\n    // height: 400px;\r\n    background-color: var(--white);\r\n    border-radius: 15px;\r\n    padding: 2em;\r\n\r\n    .input-wrapper {\r\n      display: flex;\r\n      flex-direction: column;\r\n      margin: 2em 0;\r\n      input { \r\n        margin-top: 1em;\r\n        border: none;\r\n        outline: none;\r\n        border-bottom: 1px solid;\r\n        font-size: 1.2rem;\r\n      }\r\n    }\r\n    .btn-wrapper{\r\n\r\n    }\r\n  }\r\n}\r\n",
                     "styleUrl": "./login.component.scss"
                 }
             ],
@@ -1575,7 +1575,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"login-wrapper\">\n\n    <div class=\"login-body\">\n        <div class=\"heading\">\n            <h3>\n                Login\n            </h3>\n        </div>\n        <form [formGroup]=\"loginform\">\n\n        <div class=\"input-wrapper\">\n            <label for=\"username\">Email</label>\n            <input type=\"email\" placeholder=\"Enter your email\" formControlName=\"email\">\n        </div>\n        <div class=\"input-wrapper\">\n            <label for=\"username\">Password</label>\n            <input type=\"password\" placeholder=\"Enter your password\" formControlName=\"password\">\n        </div>\n    </form>\n\n        <div class=\"btn-wrapper\">\n            <app-button title = \"Login\" (click)= \"login()\"></app-button>\n        </div>\n    </div>\n\n\n</div>\n"
+            "templateData": "<div class=\"login-wrapper\">\r\n\r\n    <div class=\"login-body\">\r\n        <div class=\"heading\">\r\n            <h3>\r\n                Login\r\n            </h3>\r\n        </div>\r\n        <form [formGroup]=\"loginform\">\r\n\r\n        <div class=\"input-wrapper\">\r\n            <label for=\"username\">Email</label>\r\n            <input type=\"email\" placeholder=\"Enter your email\" formControlName=\"email\">\r\n        </div>\r\n        <div class=\"input-wrapper\">\r\n            <label for=\"username\">Password</label>\r\n            <input type=\"password\" placeholder=\"Enter your password\" formControlName=\"password\">\r\n        </div>\r\n    </form>\r\n\r\n        <div class=\"btn-wrapper\">\r\n            <app-button title = \"Login\" (click)= \"login()\"></app-button>\r\n        </div>\r\n    </div>\r\n\r\n\r\n</div>\r\n"
         }
     ],
     "modules": [
@@ -1679,20 +1679,12 @@
                 "defaultValue": "Template.bind({})"
             },
             {
-                "name": "context",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/test.ts",
-                "type": "",
-                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
-            },
-            {
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/environments/environment.prod.ts",
                 "type": "object",
-                "defaultValue": "{\n  production: true\n}"
+                "defaultValue": "{\r\n  production: true\r\n}"
             },
             {
                 "name": "environment",
@@ -1700,7 +1692,7 @@
                 "subtype": "variable",
                 "file": "src/environments/environment.ts",
                 "type": "object",
-                "defaultValue": "{\n  production: false,\n\n  login: serverBaseUrl + '/auth/login',\n  getProducts: serverBaseUrl + '/products',\n  addProducts: serverBaseUrl + '/products',\n  deleteProducts: serverBaseUrl + '/products/{id}',\n  getProductsById: serverBaseUrl + '/products/{id}',\n  editProductsBy: serverBaseUrl + '/products/{id}',\n}"
+                "defaultValue": "{\r\n  production: false,\r\n\r\n  login: serverBaseUrl + '/auth/login',\r\n  getProducts: serverBaseUrl + '/products',\r\n  addProducts: serverBaseUrl + '/products',\r\n  deleteProducts: serverBaseUrl + '/products/{id}',\r\n  getProductsById: serverBaseUrl + '/products/{id}',\r\n  editProductsBy: serverBaseUrl + '/products/{id}',\r\n}"
             },
             {
                 "name": "HIDE_ADD_PRODUCT",
@@ -1741,13 +1733,6 @@
                 "file": "src/stories/lit-button.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "require",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/test.ts",
-                "type": "literal type"
             },
             {
                 "name": "serverBaseUrl",
@@ -1863,23 +1848,6 @@
                     "defaultValue": "(args: ButtonComponent) => ({\r\n    component: ButtonComponent,\r\n    props: args,\r\n  })"
                 }
             ],
-            "src/test.ts": [
-                {
-                    "name": "context",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/test.ts",
-                    "type": "",
-                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
-                },
-                {
-                    "name": "require",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/test.ts",
-                    "type": "literal type"
-                }
-            ],
             "src/environments/environment.prod.ts": [
                 {
                     "name": "environment",
@@ -1887,7 +1855,7 @@
                     "subtype": "variable",
                     "file": "src/environments/environment.prod.ts",
                     "type": "object",
-                    "defaultValue": "{\n  production: true\n}"
+                    "defaultValue": "{\r\n  production: true\r\n}"
                 }
             ],
             "src/environments/environment.ts": [
@@ -1897,7 +1865,7 @@
                     "subtype": "variable",
                     "file": "src/environments/environment.ts",
                     "type": "object",
-                    "defaultValue": "{\n  production: false,\n\n  login: serverBaseUrl + '/auth/login',\n  getProducts: serverBaseUrl + '/products',\n  addProducts: serverBaseUrl + '/products',\n  deleteProducts: serverBaseUrl + '/products/{id}',\n  getProductsById: serverBaseUrl + '/products/{id}',\n  editProductsBy: serverBaseUrl + '/products/{id}',\n}"
+                    "defaultValue": "{\r\n  production: false,\r\n\r\n  login: serverBaseUrl + '/auth/login',\r\n  getProducts: serverBaseUrl + '/products',\r\n  addProducts: serverBaseUrl + '/products',\r\n  deleteProducts: serverBaseUrl + '/products/{id}',\r\n  getProductsById: serverBaseUrl + '/products/{id}',\r\n  editProductsBy: serverBaseUrl + '/products/{id}',\r\n}"
                 },
                 {
                     "name": "serverBaseUrl",
@@ -2363,26 +2331,6 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "Template",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/test.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "context",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/test.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "require",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
