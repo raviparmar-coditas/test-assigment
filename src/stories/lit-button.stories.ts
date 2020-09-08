@@ -8,14 +8,14 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 // import { ButtonComponent } from '../app/common-components/button/button.component';
 import { Component, NgModule  } from '@angular/core';
 // import {storiesOf} from '@storybook/polymer';
-
+import { AppModule } from '../app/app.module'
 export default {
     title: 'Example/lit-button',
     component: CustomElement,
     decorators: [
       moduleMetadata({
-        declarations: [CustomElement],
-        imports: [CommonModule,Component, NgModule],
+        declarations: [],
+        imports: [NgModule],
           schemas: [
             CUSTOM_ELEMENTS_SCHEMA
           ]
@@ -23,12 +23,12 @@ export default {
     ],
   } as Meta;
 
-  const Template: Story<CustomElement> = (args: CustomElement) => ({
-    component: CustomElement,
-    props: args,    
-  });
+//   const Template: Story<CustomElement> = (args: CustomElement) => ({
+//     component: CustomElement,
+//     props: args,    
+//   });
 
-  export const litButton = Template.bind({});
-  litButton.args = {
-    title: 'Button'
-  }
+//   export const litButton = Template.bind({});
+//   litButton.args = {
+//     title: 'Button'
+//   }

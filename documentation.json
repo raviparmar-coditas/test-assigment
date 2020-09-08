@@ -1000,7 +1000,7 @@
         },
         {
             "name": "CardComponent",
-            "id": "component-CardComponent-4fd357e0e993358c17d7882702fb8edf",
+            "id": "component-CardComponent-e3c5c1674806891b820a98b299719e7c",
             "file": "src/app/components/card/card.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1107,7 +1107,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';\r\nimport { StateService } from 'src/app/services/state.service';\r\nimport { HttpService } from 'src/app/services/http.service';\r\nimport { environment } from 'src/environments/environment';\r\nimport { CustomElement } from '../../lit-elements/cutom-button-elements';\r\nimport { Store } from '@ngrx/store';\r\nimport * as loginActions from '../../store/action'\r\n\r\nconsole.assert(CustomElement !== undefined);\r\n@Component({\r\n  selector: 'app-card',\r\n  templateUrl: './card.component.html',\r\n  styleUrls: ['./card.component.scss']\r\n})\r\nexport class CardComponent implements OnInit {\r\n  @Output() newItemEvent = new EventEmitter<any>();\r\n  @Output() newItemIdEvent = new EventEmitter<any>();\r\n  @Input() product;\r\n\r\n  constructor(public stateService: StateService,private httpService:HttpService,private store: Store<any>) {\r\n    \r\n    JSON.stringify\r\n   }\r\n\r\n  ngOnInit(): void {\r\n    // console.log(\"products\",this.product);\r\n    \r\n  }\r\n  deleteProduct(id){\r\n    this.httpService.deleteSecured(environment.deleteProducts.replace('{id}',id)).subscribe(data =>{\r\n      console.log(data);\r\n      this.newItemEvent.emit(data);\r\n    })\r\n  }\r\n  edit(id){\r\n    // this.stateService.editProductFormView = true;\r\n    this.store.dispatch(new loginActions.ShowEditProductAction());\r\n    this.newItemIdEvent.emit(id);\r\n  }\r\n  \r\n  \r\n\r\n}\r\n",
+            "sourceCode": "import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';\r\nimport { StateService } from 'src/app/services/state.service';\r\nimport { HttpService } from 'src/app/services/http.service';\r\nimport { environment } from 'src/environments/environment';\r\nimport { CustomElement } from '../../lit-elements/cutom-button-elements';\r\nimport { Store } from '@ngrx/store';\r\nimport * as loginActions from '../../store/action'\r\n\r\nconsole.assert(CustomElement !== undefined);\r\n@Component({\r\n  selector: 'app-card',\r\n  templateUrl: './card.component.html',\r\n  styleUrls: ['./card.component.scss']\r\n})\r\nexport class CardComponent implements OnInit {\r\n  @Output() newItemEvent = new EventEmitter<any>();\r\n  @Output() newItemIdEvent = new EventEmitter<any>();\r\n  @Input() product;\r\n\r\n  constructor(public stateService: StateService, private httpService: HttpService, private store: Store<any>) {\r\n\r\n    JSON.stringify\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    // console.log(\"products\",this.product);\r\n\r\n  }\r\n  deleteProduct(id) {\r\n    this.httpService.deleteSecured(environment.deleteProducts.replace('{id}', id)).subscribe(data => {\r\n      console.log(data);\r\n      this.newItemEvent.emit(data);\r\n    })\r\n  }\r\n  edit(id) {\r\n    // this.stateService.editProductFormView = true;\r\n    this.store.dispatch(new loginActions.ShowEditProductAction());\r\n    this.newItemIdEvent.emit(id);\r\n  }\r\n\r\n\r\n\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1161,7 +1161,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"card\">\r\n  <img src=\"{{ product.imageUrl }}\" alt=\"card image\" />\r\n  <div class=\"info\">\r\n    <h3>{{ product.heading }}</h3>\r\n    <p>\r\n      {{ product.description }}\r\n    </p>\r\n  </div>\r\n  <div class=\"btn-wrapper\" *ngIf=\"this.stateService.user\">\r\n    <custom-button  title=\"Edit\" (click)=\"edit(product.id)\"></custom-button >\r\n    <custom-button  title=\"Delete\" (click)=\"deleteProduct(product.id)\"></custom-button>\r\n  </div>\r\n</div>\r\n"
+            "templateData": "<div class=\"card\">\r\n  <img src=\"{{ product.imageUrl }}\" alt=\"card image\" />\r\n  <div class=\"info\">\r\n    <h3>{{ product.heading }}</h3>\r\n    <p>\r\n      {{ product.description }}\r\n    </p>\r\n  </div>\r\n  <div class=\"btn-wrapper\" *ngIf=\"this.stateService.user\">\r\n    <app-button  title=\"Edit\" (click)=\"edit(product.id)\"></app-button >\r\n    <app-button  title=\"Delete\" (click)=\"deleteProduct(product.id)\"></app-button>\r\n  </div>\r\n</div>\r\n"
         },
         {
             "name": "EditProductsComponent",
@@ -1671,6 +1671,14 @@
     "miscellaneous": {
         "variables": [
             {
+                "name": "card",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/card.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "CommonBtn",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1770,6 +1778,14 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "src/stories/card.stories.ts",
+                "type": "Story<CardComponent>",
+                "defaultValue": "(args: CardComponent) => ({\r\n    component: CardComponent,\r\n    props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "src/stories/common-button.stories.ts",
                 "type": "Story<ButtonComponent>",
                 "defaultValue": "(args: ButtonComponent) => ({\r\n    component: ButtonComponent,\r\n    props: args,\r\n  })"
@@ -1830,6 +1846,24 @@
         ],
         "enumerations": [],
         "groupedVariables": {
+            "src/stories/card.stories.ts": [
+                {
+                    "name": "card",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/card.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/card.stories.ts",
+                    "type": "Story<CardComponent>",
+                    "defaultValue": "(args: CardComponent) => ({\r\n    component: CardComponent,\r\n    props: args,\r\n})"
+                }
+            ],
             "src/stories/common-button.stories.ts": [
                 {
                     "name": "CommonBtn",
@@ -2291,6 +2325,26 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "serverBaseUrl",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/card.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "card",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/card.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

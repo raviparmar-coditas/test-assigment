@@ -7,7 +7,7 @@
     </p>
   </div>
   <div class="btn-wrapper" *ngIf="this.stateService.user">
-    <custom-button  title="Edit" (click)="edit(product.id)"></custom-button >
-    <custom-button  title="Delete" (click)="deleteProduct(product.id)"></custom-button>
+    <app-button  title="Edit" (click)="edit(product.id)"></app-button >
+    <app-button  title="Delete" (click)="deleteProduct(product.id)"></app-button>
   </div>
 </div>

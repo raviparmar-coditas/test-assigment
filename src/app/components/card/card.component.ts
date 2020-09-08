@@ -17,27 +17,27 @@ export class CardComponent implements OnInit {
   @Output() newItemIdEvent = new EventEmitter<any>();
   @Input() product;
 
-  constructor(public stateService: StateService,private httpService:HttpService,private store: Store<any>) {
-    
+  constructor(public stateService: StateService, private httpService: HttpService, private store: Store<any>) {
+
     JSON.stringify
-   }
+  }
 
   ngOnInit(): void {
     // console.log("products",this.product);
-    
+
   }
-  deleteProduct(id){
-    this.httpService.deleteSecured(environment.deleteProducts.replace('{id}',id)).subscribe(data =>{
+  deleteProduct(id) {
+    this.httpService.deleteSecured(environment.deleteProducts.replace('{id}', id)).subscribe(data => {
       console.log(data);
       this.newItemEvent.emit(data);
     })
   }
-  edit(id){
+  edit(id) {
     // this.stateService.editProductFormView = true;
     this.store.dispatch(new loginActions.ShowEditProductAction());
     this.newItemIdEvent.emit(id);
   }
-  
-  
+
+
 
 }
