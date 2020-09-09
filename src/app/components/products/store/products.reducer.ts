@@ -51,6 +51,33 @@ export function productReducer(state = initialState, action: productActions.Prod
       };
     }
 
+    case productActions.ProductActionTypes.CREATE_PRODUCT: {
+      return {
+        ...state,
+        loading: true
+      };
+    }
+
+    case productActions.ProductActionTypes.CREATE_PRODUCT_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        loaded: true,
+        products: [...state.products,action.payload]
+      };
+    }
+
+    case productActions.ProductActionTypes.CREATE_PRODUCT_FAIL: {
+      return {
+        ...state,
+        loaded: false,
+        loading: false,
+        error: action.payload
+      };
+    }
+
+    
+
     default: {
       return state;
     }

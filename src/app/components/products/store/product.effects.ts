@@ -34,4 +34,21 @@ export class ProductEffect {
     )
   );
 
+  @Effect()
+  createProducts$: Observable<Action> = this.actions$.pipe(
+    ofType<productActions.CreateProduct>(
+        productActions.ProductActionTypes.CREATE_PRODUCT
+    ),
+    map((action: productActions.CreateProduct) => action.payload),
+    mergeMap((product: Product) =>
+      this.httpService.postSecured(environment.addProducts,product).pipe(
+        map(
+          (newproduct: Product) =>
+            new productActions.CreateProductSuccess(newproduct)
+        ),
+        catchError(err => of(new productActions.CreateProductFail(err)))
+      )
+    )
+  );
+
 }

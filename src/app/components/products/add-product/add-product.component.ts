@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Output, EventEmitter } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as loginActions from '../../../store/action'
-
+import * as ProductActions from "../store/product.action";
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -33,11 +33,12 @@ export class AddProductComponent implements OnInit {
     
   }
   addProduct(){
-    this.httpService.postSecured(environment.addProducts,this.addProductForm.value).subscribe(data =>{
-      console.log(data);
-      this.store.dispatch(new loginActions.HideAddProductAction());
-      this.newItemEvent.emit(data);
-    })
+    // this.httpService.postSecured(environment.addProducts,this.addProductForm.value).subscribe(data =>{
+    //   console.log(data);
+    //   this.store.dispatch(new loginActions.HideAddProductAction());
+    //   this.newItemEvent.emit(data);
+    // })
+    this.store.dispatch(new ProductActions.CreateProduct(this.addProductForm.value))
   }
 
   Cancel(){
