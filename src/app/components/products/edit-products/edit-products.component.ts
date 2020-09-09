@@ -4,9 +4,9 @@ import { HttpService } from 'src/app/services/http.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { Output, EventEmitter } from '@angular/core';
-import { CustomElement } from '../../lit-elements/cutom-button-elements';
+import { CustomElement } from '../../../lit-elements/cutom-button-elements';
 import { Store } from '@ngrx/store';
-import * as loginActions from '../../store/action'
+import * as loginActions from '../../../store/action'
 
 console.assert(CustomElement !== undefined);
 @Component({

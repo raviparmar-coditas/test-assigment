@@ -2,9 +2,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { StateService } from 'src/app/services/state.service';
 import { HttpService } from 'src/app/services/http.service';
 import { environment } from 'src/environments/environment';
-import { CustomElement } from '../../lit-elements/cutom-button-elements';
+import { CustomElement } from '../../../lit-elements/cutom-button-elements';
 import { Store } from '@ngrx/store';
-import * as loginActions from '../../store/action'
+import * as loginActions from '../../../store/action'
 
 console.assert(CustomElement !== undefined);
 @Component({
@@ -23,7 +23,6 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // console.log("products",this.product);
 
   }
   deleteProduct(id) {
@@ -33,7 +32,6 @@ export class CardComponent implements OnInit {
     })
   }
   edit(id) {
-    // this.stateService.editProductFormView = true;
     this.store.dispatch(new loginActions.ShowEditProductAction());
     this.newItemIdEvent.emit(id);
   }
