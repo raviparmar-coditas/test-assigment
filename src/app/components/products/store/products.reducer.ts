@@ -2,6 +2,7 @@
 import * as productActions from "./product.action";
 import { Product } from "./product.model";
 import * as fromRoot from "./app-state";
+import { createFeatureSelector, createSelector } from "@ngrx/store";
 
 export interface ProductState {
   products: Product[],
@@ -56,3 +57,16 @@ export function productReducer(state = initialState, action: productActions.Prod
 
   }
 }
+
+const getProductFeatureState = createFeatureSelector<ProductState>(
+  "product"
+)
+
+export const getProducts = createSelector(
+  getProductFeatureState,
+  (state:ProductState) => state.products
+)
+export const getError = createSelector(
+  getProductFeatureState,
+  (state:ProductState) => state.error
+)

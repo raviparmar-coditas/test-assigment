@@ -23,12 +23,14 @@ export class AppComponent implements OnInit {
 	public addProductFormView: boolean;
 	public editProductFormView: boolean;
 
+	products$: Observable<Product[]>
+
 	constructor(
 		private httpService: HttpService,
 		public stateService: StateService,
 		private store: Store<any>
 	) {
-		// this.getProducts();
+		this.getProducts();
 	}
 
 	ngOnInit(): void {
@@ -38,18 +40,14 @@ export class AppComponent implements OnInit {
 			this.addProductFormView = state.loginView.addProductFormView;
 			this.editProductFormView = state.loginView.editProductFormView;
 		});
-		this.store.dispatch(new ProductActions.LoadProducts());
-		this.store.subscribe(state =>(this.products = state.product.products))
-		console.log("products",this.products);
+
 	}
 
 	getProducts() {
-		this.httpService
-			.getSecured(environment.getProducts)
-			.subscribe((data) => {
-				this.products = data;
-				console.log(this.products);
-			});
+			this.store.dispatch(new ProductActions.LoadProducts());
+			// this.store.subscribe(state =>(this.products = state.product.products))
+			this.products$ = this.store.pipe(select(fromProduct.getProducts));
+
 	}
 
 	getId(id) {
