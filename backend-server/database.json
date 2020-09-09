@@ -1,0 +1,38 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "heading": "Apple Imac",
+      "description": "A1312 Core i7",
+      "imageUrl": "https://images.pexels.com/photos/1029757/pexels-photo-1029757.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      "uploader-id": "1"
+    },
+    {
+      "id": "2",
+      "heading": "One plus phone",
+      "description": "HD display 90Hz",
+      "imageUrl": "https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      "uploader-id": "1"
+    },
+    {
+      "id": "4",
+      "heading": "Iphone 11",
+      "description": "High quality camera",
+      "imageUrl": "https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "uploader-id": "1"
+    },
+    {
+      "heading": "Apple 4 watch",
+      "description": "New Apple Watch",
+      "imageUrl": "https://images.pexels.com/photos/437037/pexels-photo-437037.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      "id": "33",
+      "uploaderId": "2"
+    },
+    {
+      "heading": "Macbook",
+      "description": "powerfull machine",
+      "imageUrl": "https://images.pexels.com/photos/2047905/pexels-photo-2047905.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "id": "99"
+    }
+  ]
+}
