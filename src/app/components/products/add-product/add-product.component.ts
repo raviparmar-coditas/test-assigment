@@ -29,7 +29,6 @@ export class AddProductComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    console.log(this.mode);
     
   }
   addProduct(){

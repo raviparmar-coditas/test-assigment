@@ -2,11 +2,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { StateService } from 'src/app/services/state.service';
 import { HttpService } from 'src/app/services/http.service';
 import { environment } from 'src/environments/environment';
-import { CustomElement } from '../../../lit-elements/cutom-button-elements';
 import { Store } from '@ngrx/store';
 import * as loginActions from '../../../store/action'
 
-console.assert(CustomElement !== undefined);
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',

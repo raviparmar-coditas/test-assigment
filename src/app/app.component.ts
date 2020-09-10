@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpService } from './services/http.service';
 import { StateService } from './services/state.service';
-import { CustomElement } from './lit-elements/cutom-button-elements';
 import { Store, select } from "@ngrx/store";
 import { Observable } from "rxjs";
 import * as loginActions from './store/action';
@@ -10,7 +9,6 @@ import * as fromProduct from './components/products/store/products.reducer'
 import * as ProductActions  from './components/products/store/product.action'
 import { Product } from './components/products/store/product.model'
 
-console.assert(CustomElement !== undefined);
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
