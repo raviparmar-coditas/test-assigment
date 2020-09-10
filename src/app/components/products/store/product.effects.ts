@@ -87,4 +87,20 @@ export class ProductEffect {
     )
   );
 
+  @Effect()
+  deleteProduct$: Observable<Action> = this.actions$.pipe(
+    ofType<productActions.DeleteProduct>(
+        productActions.ProductActionTypes.DELETE_PRODUCT
+    ),
+    mergeMap((action: productActions.DeleteProduct) =>
+      this.httpService.deleteSecured(environment.deleteProducts.replace('{id}', action.payload.toString())).pipe(
+        map(
+          () =>
+            new productActions.DeleteProductSuccess(action.payload)
+        ),
+        catchError(err => of(new productActions.DeleteProductFail(err)))
+      )
+    )
+  );
+
 }

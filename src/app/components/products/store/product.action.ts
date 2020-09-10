@@ -14,6 +14,9 @@ export enum ProductActionTypes {
 	UPDATE_PRODUCT = '[Product] Update Product',
 	UPDATE_PRODUCT_SUCCESS = '[Product] Update Product Success',
 	UPDATE_PRODUCT_FAIL = '[Product] Update Product Fail',
+	DELETE_PRODUCT = '[Product] Delete Product',
+	DELETE_PRODUCT_SUCCESS = '[Product] Delete Product Success',
+	DELETE_PRODUCT_FAIL = '[Product] Delete Product Fail',
 
 }
 // get Products
@@ -58,6 +61,7 @@ export class LoadProductFail implements Action {
 	readonly type = ProductActionTypes.LOAD_PRODUCT_FAIL;
 	constructor(public payload: string) {}
 }
+
 // update Product by id
 export class UpdateProduct implements Action {
 	readonly type = ProductActionTypes.UPDATE_PRODUCT;
@@ -70,6 +74,21 @@ export class UpdateProductSuccess implements Action {
 
 export class UpdateProductFail implements Action {
 	readonly type = ProductActionTypes.UPDATE_PRODUCT_FAIL;
+	constructor(public payload: string) {}
+}
+
+// update Product by id
+export class DeleteProduct implements Action {
+	readonly type = ProductActionTypes.DELETE_PRODUCT;
+	constructor(public payload: Number) {}
+}
+export class DeleteProductSuccess implements Action {
+	readonly type = ProductActionTypes.DELETE_PRODUCT_SUCCESS;
+	constructor(public payload: Number) {}
+}
+
+export class DeleteProductFail implements Action {
+	readonly type = ProductActionTypes.DELETE_PRODUCT_FAIL;
 	constructor(public payload: string) {}
 }
 
@@ -86,4 +105,7 @@ export type ProductAction =
 	| LoadProductFail
 	| UpdateProduct
 	| UpdateProductSuccess
-	| UpdateProductFail;
+	| UpdateProductFail
+	| DeleteProduct
+	| DeleteProductSuccess
+	| DeleteProductFail;

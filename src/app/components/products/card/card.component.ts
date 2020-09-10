@@ -4,7 +4,8 @@ import { HttpService } from 'src/app/services/http.service';
 import { environment } from 'src/environments/environment';
 import { Store } from '@ngrx/store';
 import * as loginActions from '../../../store/action'
-
+import * as ProductActions from "../store/product.action";
+import { productReducer } from '../store/products.reducer';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -24,10 +25,7 @@ export class CardComponent implements OnInit {
 
   }
   deleteProduct(id) {
-    this.httpService.deleteSecured(environment.deleteProducts.replace('{id}', id)).subscribe(data => {
-      console.log(data);
-      this.newItemEvent.emit(data);
-    })
+    this.store.dispatch(new ProductActions.DeleteProduct(id));
   }
   edit(id) {
     this.store.dispatch(new loginActions.ShowEditProductAction());

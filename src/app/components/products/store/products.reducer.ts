@@ -122,16 +122,49 @@ export function productReducer(
 					return action.payload;
 				}
 				return item;
-      });
+			});
 			return {
 				...state,
 				loading: false,
-        loaded: true,
-        products: newProducts
+				loaded: true,
+				products: newProducts,
 			};
-    }
-    
-    case productActions.ProductActionTypes.UPDATE_PRODUCT_FAIL: {
+		}
+
+		case productActions.ProductActionTypes.UPDATE_PRODUCT_FAIL: {
+			return {
+				...state,
+				products: [],
+				loaded: false,
+				loading: false,
+				error: action.payload,
+			};
+		}
+
+		case productActions.ProductActionTypes.DELETE_PRODUCT: {
+			return{
+				...state,
+				loading: true,
+				productId: action.payload,
+			}
+		}
+
+		case productActions.ProductActionTypes.DELETE_PRODUCT_SUCCESS: {
+			let newProducts = [...state.products];
+			newProducts = newProducts.filter((item) => {
+				if (action.payload != item.id) {
+					return action.payload;
+				}
+			});
+			return{
+				...state,
+				loading: false,
+				loaded: true,
+				products: newProducts
+			}
+		}
+
+		case productActions.ProductActionTypes.DELETE_PRODUCT_FAIL: {
 			return {
 				...state,
 				products: [],

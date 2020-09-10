@@ -33,7 +33,6 @@ export class AppComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.store.subscribe((state) => {
-			console.log(state, 'app');
 			this.loggedInFormView = state.loginView.loggedInFormView;
 			this.addProductFormView = state.loginView.addProductFormView;
 			this.editProductFormView = state.loginView.editProductFormView;
@@ -43,13 +42,10 @@ export class AppComponent implements OnInit {
 
 	getProducts() {
 			this.store.dispatch(new ProductActions.LoadProducts());
-			// this.store.subscribe(state =>(this.products = state.product.products))
 			this.products$ = this.store.pipe(select(fromProduct.getProducts));
-
 	}
 
 	editItem(id) {
 		this.id = id;
-		console.log(id);
 	}
 }
