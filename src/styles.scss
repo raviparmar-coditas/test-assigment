@@ -55,6 +55,9 @@ html {
             display: flex;
             flex-direction: column;
             margin: 2em 0;
+            label{
+              color: var(--black);
+            }
             input { 
               margin-top: 1em;
               border: none;
