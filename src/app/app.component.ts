@@ -48,12 +48,6 @@ export class AppComponent implements OnInit {
 
 	}
 
-	getId(id) {
-		console.log(id);
-	}
-	addItem(newItem: string) {
-		this.getProducts();
-	}
 	editItem(id) {
 		this.id = id;
 		console.log(id);

@@ -5,8 +5,12 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { Output, EventEmitter } from '@angular/core';
 import { CustomElement } from '../../../lit-elements/cutom-button-elements';
-import { Store } from '@ngrx/store';
-import * as loginActions from '../../../store/action'
+import { Store, select } from '@ngrx/store';
+import * as loginActions from '../../../store/action';
+import * as ProductActions from '../store/product.action';
+import * as fromProduct from '../store/products.reducer';
+import { Observable } from 'rxjs';
+import { Product } from '../store/product.model';
 
 console.assert(CustomElement !== undefined);
 @Component({
@@ -15,7 +19,6 @@ console.assert(CustomElement !== undefined);
 	styleUrls: ['./edit-products.component.scss'],
 })
 export class EditProductsComponent implements OnInit {
-	@Output() newItemEvent = new EventEmitter<any>();
 	@Input() id;
 	constructor(
 		public stateService: StateService,
@@ -29,37 +32,28 @@ export class EditProductsComponent implements OnInit {
 		imageUrl: new FormControl(),
 		id: new FormControl(),
 	});
-	ngOnInit(): void {
-		console.log(this.id);
 
+	ngOnInit(): void {
 		this.getProductById(this.id);
 	}
+
 	getProductById(id) {
-		this.httpService
-			.getSecured(environment.getProductsById.replace('{id}', id))
-			.subscribe((data) => {
-				console.log(data);
-				this.editProductForm.patchValue(data);
-				// this.stateService.addProductFormView = false;
-				// this.newItemEvent.emit(data);
-			});
+		this.store.dispatch(new ProductActions.LoadProduct(id));
+		const product$: Observable<any> = this.store.pipe(
+			select(fromProduct.getProductById)
+		);
+		product$.subscribe((formData) => {
+			if (formData) {
+				this.editProductForm.patchValue(formData);
+			}
+		});
 	}
+	
 	editProduct() {
-		this.httpService
-			.patchSecured(
-				environment.editProductsBy.replace('{id}', this.id),
-				this.editProductForm.value
-			)
-			.subscribe((data) => {
-				console.log(data);
-				// this.stateService.editProductFormView = false;
-				this.store.dispatch(new loginActions.HideEditProductAction());
-				this.newItemEvent.emit(data);
-			});
+		this.store.dispatch(new ProductActions.UpdateProduct(this.editProductForm.value));
 	}
 
 	Cancel() {
 		this.store.dispatch(new loginActions.HideEditProductAction());
-		// this.stateService.editProductFormView = false;
 	}
 }

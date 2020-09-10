@@ -13,15 +13,9 @@ console.assert(CustomElement !== undefined);
 export class HeaderComponent implements OnInit {
   public loggedInFormView: boolean
   constructor(public stateService: StateService,private store: Store<any>) {
-    // this.loggedInFormView$ = store.select('loginView');
   }
 
   ngOnInit(): void {
-    this.store.subscribe((state) => {
-      console.log(state, 'header');
-    })
-    // console.log(this.loggedInFormView$);
-
     //toggle
   let checkbox = document.querySelector('input[name=theme]');
 
@@ -44,19 +38,14 @@ export class HeaderComponent implements OnInit {
 
   }
   openLoginFrom() {
-    // this.stateService.loggedInFormView = true;
     this.store.dispatch(new loginActions.ShowLoginAction());
   }
   logout() {
-    // this.stateService.isLoggedIn = false;
     this.store.dispatch(new loginActions.HideLoginAction());
-
     console.log('login', this.stateService.isLoggedIn);
-
     sessionStorage.clear();
   }
   addProduct(){
-    // this.stateService.addProductFormView = true;
     this.store.dispatch(new loginActions.ShowAddProductAction());
   }
 

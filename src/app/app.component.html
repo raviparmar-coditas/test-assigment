@@ -1,14 +1,13 @@
 <app-header></app-header>
 <app-login *ngIf="loggedInFormView"></app-login>
-<app-add-product (newItemEvent)="addItem($event)" *ngIf="addProductFormView"></app-add-product>
-<app-edit-products id={{id}} (newItemEvent)="addItem($event)" *ngIf="editProductFormView"></app-edit-products>
+<app-add-product  *ngIf="addProductFormView"></app-add-product>
+<app-edit-products id={{id}} *ngIf="editProductFormView"></app-edit-products>
 <main>
   <div class="container">
     <ng-container *ngFor="let item of (products$ |async )">
       <app-card
       [product]="item"
-        (newItemEvent)="addItem($event)"
-        (newItemIdEvent)="editItem($event)"
+      (newItemIdEvent)="editItem($event)"
       >
       </app-card>
     </ng-container>

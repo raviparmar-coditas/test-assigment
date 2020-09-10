@@ -39,16 +39,50 @@ export class ProductEffect {
     ofType<productActions.CreateProduct>(
         productActions.ProductActionTypes.CREATE_PRODUCT
     ),
-    map((action: productActions.CreateProduct) => action.payload),
-    mergeMap((product: Product) =>
-      this.httpService.postSecured(environment.addProducts,product).pipe(
+    mergeMap((action: productActions.CreateProduct) =>
+      this.httpService.postSecured(environment.addProducts,action.payload).pipe(
         switchMap(
           (newproduct: Product) =>[
-            new showModalActions.HideAddProductAction(),
-            new productActions.CreateProductSuccess(newproduct)
+            new productActions.CreateProductSuccess(newproduct),
+            new showModalActions.HideAddProductAction()
         ]
         ),
         catchError(err => of(new productActions.CreateProductFail(err)))
+      )
+    )
+  );
+
+
+  @Effect()
+  loadProduct$: Observable<Action> = this.actions$.pipe(
+    ofType<productActions.LoadProduct>(
+        productActions.ProductActionTypes.LOAD_PRODUCT
+    ),
+    mergeMap((action: productActions.LoadProduct) =>
+      this.httpService.getSecured(environment.getProductsById.replace('{id}', action.payload.toString())).pipe(
+        map(
+          (products: Product) =>
+            new productActions.LoadProductSuccess(products)
+        ),
+        catchError(err => of(new productActions.LoadProductFail(err)))
+      )
+    )
+  );
+
+  @Effect()
+  updateProduct$: Observable<Action> = this.actions$.pipe(
+    ofType<productActions.UpdateProduct>(
+        productActions.ProductActionTypes.UPDATE_PRODUCT
+    ),
+    mergeMap((action: productActions.UpdateProduct) =>
+      this.httpService.patchSecured(environment.getProductsById.replace('{id}', action.payload.id.toString()),action.payload).pipe(
+        switchMap(
+          (products: Product) =>[
+            new productActions.UpdateProductSuccess(products),
+            new showModalActions.HideEditProductAction()
+          ]
+        ),
+        catchError(err => of(new productActions.UpdateProductFail(err)))
       )
     )
   );

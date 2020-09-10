@@ -1,6 +1,6 @@
 import { LitElement, html, customElement, property, css } from 'lit-element';
 
-console.log('hello-world module');
+// console.log('hello-world module');
 
 @customElement('custom-button')
 export class CustomElement extends LitElement {

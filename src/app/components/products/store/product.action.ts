@@ -8,8 +8,15 @@ export enum ProductActionTypes {
 	CREATE_PRODUCT = '[Product] Create Products',
 	CREATE_PRODUCT_SUCCESS = '[Product] Create Product Success',
 	CREATE_PRODUCT_FAIL = '[Product] Create Product Fail',
+	LOAD_PRODUCT = '[Product] Load Product',
+	LOAD_PRODUCT_SUCCESS = '[Product] Load Product Success',
+	LOAD_PRODUCT_FAIL = '[Product] Load Product Fail',
+	UPDATE_PRODUCT = '[Product] Update Product',
+	UPDATE_PRODUCT_SUCCESS = '[Product] Update Product Success',
+	UPDATE_PRODUCT_FAIL = '[Product] Update Product Fail',
+
 }
-// getProducts
+// get Products
 export class LoadProducts implements Action {
 	readonly type = ProductActionTypes.LOAD_PRODUCTS;
 }
@@ -22,7 +29,7 @@ export class LoadProductsFail implements Action {
 	readonly type = ProductActionTypes.LOAD_PRODUCTS_FAIL;
 	constructor(public payload: string) {}
 }
-// createProduct
+// create Product
 export class CreateProduct implements Action {
 	readonly type = ProductActionTypes.CREATE_PRODUCT;
 	constructor(public payload: Product) {}
@@ -37,10 +44,46 @@ export class CreateProductFail implements Action {
 	constructor(public payload: string) {}
 }
 
+// get Product by id
+export class LoadProduct implements Action {
+	readonly type = ProductActionTypes.LOAD_PRODUCT;
+	constructor(public payload: Number) {}
+}
+export class LoadProductSuccess implements Action {
+	readonly type = ProductActionTypes.LOAD_PRODUCT_SUCCESS;
+	constructor(public payload: Product) {}
+}
+
+export class LoadProductFail implements Action {
+	readonly type = ProductActionTypes.LOAD_PRODUCT_FAIL;
+	constructor(public payload: string) {}
+}
+// update Product by id
+export class UpdateProduct implements Action {
+	readonly type = ProductActionTypes.UPDATE_PRODUCT;
+	constructor(public payload: Product) {}
+}
+export class UpdateProductSuccess implements Action {
+	readonly type = ProductActionTypes.UPDATE_PRODUCT_SUCCESS;
+	constructor(public payload: Product) {}
+}
+
+export class UpdateProductFail implements Action {
+	readonly type = ProductActionTypes.UPDATE_PRODUCT_FAIL;
+	constructor(public payload: string) {}
+}
+
+
 export type ProductAction =
 	| LoadProducts
 	| LoadProductsSuccess
-  | LoadProductsFail
-  | CreateProduct
-  | CreateProductSuccess
-  | CreateProductFail;
+	| LoadProductsFail
+	| CreateProduct
+	| CreateProductSuccess
+	| CreateProductFail
+	| LoadProduct
+	| LoadProductSuccess
+	| LoadProductFail
+	| UpdateProduct
+	| UpdateProductSuccess
+	| UpdateProductFail;

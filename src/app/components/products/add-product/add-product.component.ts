@@ -32,11 +32,6 @@ export class AddProductComponent implements OnInit {
     
   }
   addProduct(){
-    // this.httpService.postSecured(environment.addProducts,this.addProductForm.value).subscribe(data =>{
-    //   console.log(data);
-    //   this.store.dispatch(new loginActions.HideAddProductAction());
-    //   this.newItemEvent.emit(data);
-    // })
     this.store.dispatch(new ProductActions.CreateProduct(this.addProductForm.value))
   }
 
